@@ -22,7 +22,7 @@
       <bpmn:incoming>edge_LUTApu_XqiQ8R</bpmn:incoming>
       <bpmn:outgoing>edge_XqiQ8R_ZcUcDt</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_ZcUcDt" name="Supervisior_ClaimValidation">
+    <bpmn:task id="Activity_ZcUcDt" name="ClaimSupervisorReview">
       <bpmn:incoming>edge_XqiQ8R_ZcUcDt</bpmn:incoming>
       <bpmn:outgoing>edge_ZcUcDt_WogvLk</bpmn:outgoing>
     </bpmn:task>
