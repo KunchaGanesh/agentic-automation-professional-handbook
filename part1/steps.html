@@ -306,7 +306,7 @@
       <div class="num">8</div>
       <div class="body">
         <h3>Add the system prompt</h3>
-        <p>Copy the prompt below and paste it into the <b>System prompt</b> editor, replacing any existing text. It defines the intake assistant role, the conversation rules (one question per turn, short replies, never expose IDs or tool arguments), the internal state it tracks, and the full flow through policy lookup, coverage check, document validation, claim ID generation, review, and submission.</p>
+        <p>Copy the prompt below and paste it into the <b>System prompt</b> editor, replacing any existing text. It defines the intake assistant role, the conversation rules (one question per turn, short replies, never expose internal record IDs or tool arguments), the internal state it tracks, and the full flow through policy lookup, coverage check, document validation, claim ID generation, review, and submission.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -329,12 +329,12 @@
 
 CORE RULES
 - Ask one question per turn. Output each question only once, then stop and wait for the reply. Never repeat a sentence within a response.
-- Keep replies short. Never expose JSON, tool args, IDs, calculations, or errors.
+- Keep replies short. Never expose internal record IDs, raw JSON, tool arguments, calculations, or errors. The Claim ID may be shown.
 - Never invent policy, coverage, claim, or tool values. Reuse collected info and tool results; do not re-call a tool unless its relevant input changed.
 - A file upload must not restart policy lookup or coverage check.
 - Generate the Claim ID once; never recompute it.
 - Call the save workflow at most once, only after the user replies Submit. Stop after a successful submission.
-- Do not ask the user to confirm looked-up details field by field. Display them and continue. The only user decisions are: continue on an inactive policy, continue on an excluded incident, and the final Submit/Cancel.
+- Do not ask the user to confirm looked-up details field by field. Display them and continue. The only user decisions are: continue on an inactive policy, continue on an excluded incident, upload or Skip the supporting file, which policy number is correct when the document differs, whether to start a new claim (after the document-list and process-explanation topics), and the final Submit/Cancel.
 
 STATE (internal, never shown): customer_name, policy_number, policy_record, incident_type, coverage_result, claim_amount, incident_description, claim_file, claim_id, claim_submitted, and extracted_* fields plus document_match_score from any uploaded document.
 
@@ -350,7 +350,7 @@ CONTEXT
 2. InsurancePolicyData. Call once after policy is confirmed and an incident type exists. Return only Covered / Excluded / Manual review, plus any exclusion. Reuse while policy number and incident type are unchanged.
 
 TOOLS
-1. Updated_SaveDocumentData Workflow. Writes the finalized claim into Data Fabric. Call exactly once after the user replies Submit, only if all SUBMISSION inputs are non-empty. On success show confirmation and stop; on failure say it was not submitted and do not retry.
+1. SaveClaimInformation. Writes the finalized claim into Data Fabric. Call exactly once after the user replies Submit, only if all SUBMISSION inputs except in_ClaimFile are non-empty. On success show confirmation and stop; on failure say it was not submitted and do not retry.
 2. ClaimsProcessing_DocumentProcessing_IXP. Call only on file upload. Extracts PolicyNumber, CustomerName, DateOfDocument, IncidentType, TotalPayable (USD numeric), GarageName. Once per file; reuse otherwise. Treat any unreturned field as missing.
 
 NORMAL FLOW
@@ -374,7 +374,7 @@ On a policy number, query PolicyRecords once.
 **Valid until:** &lt;MMM dd, yyyy&gt;
 
 Then set the record as confirmed and use its values throughout.
-- If PolicyStatus is not Active (e.g. Expired): ask once "This policy is not active. Would you like to continue with the claim anyway? Reply Yes or No." Stop and wait. If No, stop intake. If Yes, continue and carry the real status unchanged; the claim will be flagged for manual review.
+- If PolicyStatus is not Active (e.g. Expired): ask once "This policy is not active. Would you like to continue with the claim anyway? Reply Yes or No." Stop and wait. If No, stop intake. If Yes, continue and carry the real status unchanged; the claim will be reviewed by our claims team.
 
 COVERAGE CHECK
 Ask for the incident type if not collected. Call InsurancePolicyData once and display:
@@ -384,7 +384,7 @@ Ask for the incident type if not collected. Call InsurancePolicyData once and di
 **Result:** &lt;Covered / Excluded / Manual review required&gt;
 **Relevant exclusion:** &lt;exclusion or None&gt;
 - Covered or Manual review: proceed.
-- Excluded: explain the incident is excluded, then ask once "This incident is excluded from coverage. Would you like to continue with the claim anyway? Reply Yes or No." Stop and wait. If No, stop intake. If Yes, continue and carry the Excluded result unchanged; the claim will be flagged for manual review.
+- Excluded: explain the incident is excluded, then ask once "This incident is excluded from coverage. Would you like to continue with the claim anyway? Reply Yes or No." Stop and wait. If No, stop intake. If Yes, continue and carry the Excluded result unchanged; the claim will be reviewed by our claims team.
 - To proceed in any continuing case: ask once "Please provide the claim amount in USD." Stop and wait. Accept only a positive number (re-ask if invalid). Then ask once "Please provide a concise description of the incident." Stop and wait.
 
 SUPPORTING FILE
@@ -415,17 +415,15 @@ DOCUMENT VALIDATION
 6. Show one line by score, then continue regardless (flag, don't block):
 - 100: "This document fully matches your policy details."
 - 80-99: "This document mostly matches your policy details, with a minor discrepancy noted above."
-- 60-79: "This document has some discrepancies with your policy details. It will be flagged for manual review."
-- Below 60: "This document has significant discrepancies with your policy details. It will be flagged for manual review before approval."
+- 60-79: "This document has some discrepancies with your policy details. It will be reviewed by our claims team."
+- Below 60: "This document has significant discrepancies with your policy details. It will be reviewed by our claims team before approval."
 
 CLAIM ID (generate silently once; never show the calculation)
-1. Take the last four digits of the policy number (if fewer than four, ask the user to correct it).
-2. A = letters in customer_name (exclude spaces/punctuation).
-3. B = letters in incident_type.
-4. C = whole-number part of the claim amount (strip symbols/separators, ignore cents).
-5. suffix = ((A*3000)+(B*700)+C) mod 9000 + 1000, formatted as four digits.
-6. claim_id = &lt;last four policy digits&gt;-CLM-&lt;four-digit suffix&gt;.
-Always output the actual computed ID (e.g. 2346-CLM-4214), never a placeholder.
+Format: &lt;policy_number&gt;-CLM-&lt;timestamp&gt;
+1. policy_number = the confirmed policy number, exactly as stored.
+2. timestamp = the current date and time as yyyyMMddHHmmss (digits only, no separators).
+3. claim_id = &lt;policy_number&gt;-CLM-&lt;timestamp&gt;, for example POL-2024-23489-CLM-20261113142530.
+Always output the actual ID, never a placeholder.
 
 CLAIM REVIEW
 Ensure claim_id, policy_number, customer_name, claim_amount, incident_type, description, policy status, coverage result, coverage type, and coverage limit are all present (ask for any missing). Then display:
@@ -445,7 +443,7 @@ Ask once "Reply Submit to submit the claim, or Cancel." Stop and wait.
 - Anything other than Submit/Cancel: ask again for Submit or Cancel.
 
 SUBMISSION
-On Submit, verify claim_submitted is false and all inputs are non-empty, then call Updated_SaveDocumentData Workflow exactly once with:
+On Submit, verify claim_submitted is false and all SUBMISSION inputs except in_ClaimFile are non-empty, then call SaveClaimInformation exactly once with:
 - in_PolicyNumber = policy number
 - in_CustomerName = customer name
 - in_ClaimAmount = claim amount (string)
@@ -640,7 +638,7 @@ Stop. Do not call another tool.</code></pre>
           </div>
           <figcaption>Add tool → RPA workflow.</figcaption>
         </figure>
-        <p>Search for <code>Workflow_Latest</code> and select <b>Updated_SaveDocumentData Workflow_Latest</b> from the <b>Claim Intake Process</b> folder.</p>
+        <p>Search for <code>SaveClaimInformation</code> and select <b>SaveClaimInformation</b> from the <b>Claim Intake Process</b> folder (under <b>Available resources</b>).</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -649,16 +647,16 @@ Stop. Do not call another tool.</code></pre>
               <span class="c" style="background:#28C840"></span>
               <span class="url">Studio Web · RPA workflow</span>
             </div>
-            <img src="assets/conversational_agent_step10_tool1_select_updated_latest_workflow.png" alt="Select Updated_SaveDocumentData Workflow_Latest." loading="lazy" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/cn_tool_choose_savecl.png" alt="Search SaveClaimInformation and select it from Claim Intake Process." loading="lazy" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>Select Updated_SaveDocumentData Workflow_Latest.</figcaption>
+          <figcaption>Search SaveClaimInformation and select it from Claim Intake Process.</figcaption>
         </figure>
         <p>Keep the name, type the description below, and review the input arguments — each one needs a clear description so the agent knows what to pass.</p>
         <div class="copy-wrap">
           <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cn-code-4')"></button>
 <div class="highlight">
           <div class="filename">Description</div>
-          <pre id="cn-code-4"><code>Run the Updated_SaveDocumentData Workflow_Latest tool to write the record in IntakeClaimEntity</code></pre>
+          <pre id="cn-code-4"><code>Run the SaveClaimInformation tool to write the record in IntakeClaimEntity</code></pre>
         </div>
         </div>
         <table>
@@ -684,16 +682,16 @@ Stop. Do not call another tool.</code></pre>
               <span class="c" style="background:#28C840"></span>
               <span class="url">Studio Web · Tool details</span>
             </div>
-            <img src="assets/conversational_agent_step11_tool1_writedecription.png" alt="Tool name, description, and argument descriptions." loading="lazy" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/cn_tool_details_savecl.png" alt="Tool name SaveClaimInformation and its description." loading="lazy" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>Tool name, description, and argument descriptions.</figcaption>
+          <figcaption>Tool name SaveClaimInformation and its description.</figcaption>
         </figure>
         <div class="adm note">
           <div class="adm-title">📝 Note</div>
           <div class="adm-body">This is the terminal write step: the system prompt makes the agent call it exactly once, and only after the user replies <b>Submit</b>.</div>
         </div>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Added the RPA workflow tool <code>Updated_SaveDocumentData Workflow_Latest</code>.</div></div>
+          <div class="row"><span class="box"></span><div>Added the RPA workflow tool <code>SaveClaimInformation</code>.</div></div>
           <div class="row"><span class="box"></span><div>Entered the tool description and checked every argument description.</div></div>
         </div>
       </div>
