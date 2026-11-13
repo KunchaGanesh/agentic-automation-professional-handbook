@@ -68,83 +68,122 @@
     <span class="eyebrow">Module 2 · Lesson 12 of 16</span>
     <h1>Publish and Run the Coded Agent</h1>
     <div class="rise-divider"></div>
-    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">Pack, publish to Orchestrator, invoke, and verify that your agent shows up as an <b>Agent</b> — the four steps that take your tested agent to the cloud.</p>
+    <div class="step" id="step-38">
+      <div class="num">38</div>
+      <div class="body">
+        <h3>Deploy to Personal Workspace</h3>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cp-code-1')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="cp-code-1"><code>uip codedagent deploy --my-workspace</code></pre>
+        </div>
+        </div>
+        <p><b>Personal Workspace</b> is your own user-specific Orchestrator feed. It is private to you, so it is the safe choice for this workshop and for personal testing. For shared use, deploy to a tenant or folder feed with <code>--tenant</code> or <code>--folder</code>.</p>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Deployed the agent to my Personal Workspace.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-39">
+      <div class="num">39</div>
+      <div class="body">
+        <h3>Run the deployed agent</h3>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cp-code-2')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="cp-code-2"><code>uip codedagent invoke agent --file input.json</code></pre>
+        </div>
+        </div>
+        <p>Open the returned monitoring link, or inspect the job in Orchestrator. Confirm that the output contains <code>eligible</code>, <code>settlement_percentage</code>, <code>settlement_amount</code> and <code>message</code> with the expected values.</p>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Invoked the deployed agent and confirmed the output fields.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-40">
+      <div class="num">40</div>
+      <div class="body">
+        <h3>Understand model and unit consumption</h3>
+        <p>Publishing does not itself consume model units. Consumption occurs when the agent runs and calls the model.</p>
+        <ul>
+          <li>UiPath-hosted models are generally charged <b>per LLM call</b>. This single-node example normally makes one LLM call per run.</li>
+          <li>Under <b>Flex</b> licensing consumption is measured in Agent Units; under <b>Unified Pricing</b> it is measured in Platform Units.</li>
+          <li>Customer-managed models can be charged once per agent run instead of per LLM call.</li>
+          <li>Additional LLM guardrails can create additional model calls and consumption.</li>
+        </ul>
+        <p>The exact rate depends on the tenant plan, selected model, token size and hosting configuration. Check the execution trace and the Automation Cloud licensing page for the authoritative amount.</p>
+      </div>
+    </div>
 
     <div class="step" id="step-41">
       <div class="num">41</div>
       <div class="body">
-        <h3>Pack</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-p1')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-p1"><code>uipath pack</code></pre>
-        </div>
-        </div>
-        <p>Look for <code>Project successfully packaged.</code></p>
-      </div>
-    </div>
-
-    <div class="step" id="step-42">
-      <div class="num">42</div>
-      <div class="body">
-        <h3>Publish</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-p2')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-p2"><code>uipath publish</code></pre>
-        </div>
-        </div>
-        <p>Pick your feed when prompted.</p>
-      </div>
-    </div>
-
-    <div class="step" id="step-43">
-      <div class="num">43</div>
-      <div class="body">
-        <h3>Invoke</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-p3')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-p3"><code>uipath invoke</code></pre>
-        </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step" id="step-44">
-      <div class="num">44</div>
-      <div class="body">
-        <h3>Verify in Orchestrator</h3>
-        <p>Open <b>Orchestrator → Processes</b> and find <code>Settlement_CodedAgent_your_name</code>. Its <b>Type</b> should no longer say <b>Function (python)</b>.</p>
-        <div class="adm note">
-          <div class="adm-title">ℹ️ Governance for free</div>
-          <div class="adm-body">Because it is now an Orchestrator package, the agent inherits RBAC, audit logs, job monitoring, versioning, and one-click rollback — and it can be invoked by any trigger or UiPath process.</div>
+        <h3>Use the agent in Maestro</h3>
+        <p>Publishing the agent does not automatically replace an existing Maestro task. In the Maestro process (the <b>Settlement Coded Agent</b> lesson), select your published agent for the <b>SettlementCodedAgent</b> task and map the fields explicitly.</p>
+        <table>
+          <thead><tr><th>Direction</th><th>Fields</th></tr></thead>
+          <tbody>
+            <tr><td>Inputs</td><td><code>insurance_type</code>, <code>coverage</code>, <code>claim_amount</code></td></tr>
+            <tr><td>Outputs</td><td><code>eligible</code>, <code>settlement_percentage</code>, <code>settlement_amount</code>, <code>message</code></td></tr>
+          </tbody>
+        </table>
+        <div class="adm tip">
+          <div class="adm-title">💡 Good practice</div>
+          <div class="adm-body">Test the process in a copy first. Add a gateway after the agent that prevents an approval email when <code>eligible</code> is false. For real payouts, calculate <code>settlement_amount</code> deterministically in code and require human review.</div>
         </div>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Packaged the agent (<code>uipath pack</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Published to Orchestrator (<code>uipath publish</code>) and picked my feed</div></div>
-          <div class="row"><span class="box"></span><div>Invoked the agent (<code>uipath invoke</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Confirmed in Orchestrator → Processes that the Type is not "Function (python)"</div></div>
+          <div class="row"><span class="box"></span><div>Know which inputs and outputs to map in Maestro.</div></div>
         </div>
       </div>
     </div>
 
-    <h4>Troubleshooting</h4>
-    <table>
-      <thead><tr><th>Symptom</th><th>Fix</th></tr></thead>
-      <tbody>
-        <tr><td>Still shows as a Function</td><td>Recheck steps 12 and 14, change <code>version</code> in <code>pyproject.toml</code> to <code>0.0.2</code>, then repeat steps 17 and 18.</td></tr>
-        <tr><td>Access denied creating folders or the venv</td><td>You are in a system folder or an Administrator window. Redo step 1.</td></tr>
-        <tr><td>Pasting a multi-line block hangs at the <code>&gt;&gt;</code> prompt</td><td>Press <code>Ctrl+C</code> and use Notepad as in steps 10 to 12.</td></tr>
-        <tr><td><code>FutureWarning</code> about <code>uipath.platform.common.constants</code></td><td>Harmless deprecation notice, not an error.</td></tr>
-        <tr><td>A command differs on your version</td><td>Run <code>uipath --help</code>. Commands follow the UiPath Python SDK docs (<code>uipath …</code>).</td></tr>
-      </tbody>
-    </table>
+    <h2>Expected result after each command</h2>
+        <table>
+          <thead><tr><th>Command</th><th>Expected result</th></tr></thead>
+          <tbody>
+            <tr><td><code>python --version</code></td><td>Python 3.11, 3.12 or 3.13 is displayed.</td></tr>
+            <tr><td><code>npm --version</code></td><td>A numeric npm version is displayed.</td></tr>
+            <tr><td><code>python -m pip install --upgrade uv</code></td><td>Completes without an ERROR.</td></tr>
+            <tr><td><code>npm install -g @uipath/cli</code></td><td>npm completes and returns to the prompt.</td></tr>
+            <tr><td><code>uip tools install @uipath/codedagent-tool</code></td><td>The codedagent tool is installed successfully.</td></tr>
+            <tr><td><code>uip --version</code></td><td>A UiPath CLI version is displayed.</td></tr>
+            <tr><td><code>uip codedagent --help</code></td><td>The codedagent command list is displayed.</td></tr>
+            <tr><td><code>uv venv --python 3.13</code></td><td>A <code>.venv</code> folder is created.</td></tr>
+            <tr><td><code>.\.venv\Scripts\Activate.ps1</code></td><td>The prompt begins with <code>(.venv)</code>.</td></tr>
+            <tr><td><code>uv pip install uipath-langchain</code></td><td>The package and dependencies install without an ERROR.</td></tr>
+            <tr><td><code>uip codedagent setup --force</code></td><td>A success message confirms the Python environment is registered.</td></tr>
+            <tr><td><code>uip codedagent new $projectName</code></td><td><code>main.py</code> and <code>langgraph.json</code> are created.</td></tr>
+            <tr><td><code>uip login --organization "TPEN LABS" --tenant "AgenticPractice"</code></td><td>A browser opens; after sign-in the command returns successfully.</td></tr>
+            <tr><td><code>uip codedagent list-models</code></td><td>Available model identifiers are listed.</td></tr>
+            <tr><td><code>uip codedagent init</code></td><td><code>entry-points.json</code> and graph metadata are created; the graph shows START, settle_claim, END.</td></tr>
+            <tr><td><code>uip codedagent run agent --file input.json</code></td><td>START, settle_claim, END, the output fields and <b>Successful execution</b> are displayed.</td></tr>
+            <tr><td><code>uip codedagent deploy --my-workspace</code></td><td>The agent is deployed to the Personal Workspace feed.</td></tr>
+            <tr><td><code>uip codedagent invoke agent --file input.json</code></td><td>A cloud execution starts and a monitoring link or job result is returned.</td></tr>
+          </tbody>
+        </table>
+    <h2>Troubleshooting</h2>
+        <table>
+          <thead><tr><th>Problem</th><th>Solution</th></tr></thead>
+          <tbody>
+            <tr><td><code>uip</code> is not recognized</td><td>Restart PowerShell and run <code>uip --version</code>. Confirm npm global packages are on PATH.</td></tr>
+            <tr><td>Package import error</td><td>Activate <code>.venv</code>, run <code>uv pip install uipath-langchain</code>, then <code>uip codedagent setup --force</code>.</td></tr>
+            <tr><td>Model not found</td><td>Run <code>uip codedagent list-models</code> and use a model allowed by the tenant.</td></tr>
+            <tr><td>Shows as a Function instead of an Agent</td><td>Create a new project with <code>uip codedagent new</code> and confirm <code>langgraph.json</code> exists.</td></tr>
+            <tr><td>Version already exists</td><td>Increase the patch version in <code>pyproject.toml</code> before redeploying.</td></tr>
+            <tr><td>Incorrect arithmetic</td><td>Move multiplication and rounding out of the prompt and into deterministic Python code.</td></tr>
+            <tr><td>Nothing changed in the cloud</td><td>Run <code>uip codedagent init</code> when schemas changed, then deploy a new package version.</td></tr>
+            <tr><td>Access denied creating folders or the venv</td><td>You are in a system folder or an Administrator window. Redo the working-folder step.</td></tr>
+          </tbody>
+        </table>
+        <div class="adm note">
+          <div class="adm-title">📝 Official references</div>
+          <div class="adm-body"><a href="https://docs.uipath.com/agents/automation-cloud/latest/user-guide/about-coded-agents" target="_blank" rel="noopener">About coded agents</a> · <a href="https://docs.uipath.com/getting-started/other/latest/developer-guide/agents-langgraph-build-the-agent" target="_blank" rel="noopener">Build the agent</a> · <a href="https://docs.uipath.com/uipath-cli/standalone/latest/user-guide/uip-codedagent" target="_blank" rel="noopener">uip codedagent</a> · <a href="https://docs.uipath.com/agents/automation-cloud/latest/user-guide/publish-the-agent" target="_blank" rel="noopener">Publish the agent</a> · <a href="https://docs.uipath.com/agents/automation-cloud/latest/user-guide/licensing" target="_blank" rel="noopener">Licensing</a></div>
+        </div>
 
-    
 
     <nav class="md-footer-nav">
       <a class="prev" href="lesson-coded-build.html"><span class="dir">← Previous</span><span class="ttl">Build the Settlement Coded Agent</span></a>

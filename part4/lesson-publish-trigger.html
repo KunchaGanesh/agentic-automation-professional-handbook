@@ -69,8 +69,8 @@
     <h1>Publish and Trigger</h1>
     <div class="rise-divider"></div>
         <p>With every task configured, run the whole process end to end and confirm the start event triggers it.</p>
-    <div class="step" id="step-52">
-      <div class="num">52</div>
+    <div class="step" id="step-49">
+      <div class="num">49</div>
       <div class="body">
         <h3>Debug and check the results</h3>
         <p>Now that every task is configured, click <b>Debug</b> and run the whole process. In the <b>Execution trail</b> the start event should succeed and hand over to <b>Fraud Detection Agent</b>. Under <b>Global variables</b>, check that <code>response</code> holds the claim record.</p>
@@ -96,8 +96,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-53">
-      <div class="num">53</div>
+    <div class="step" id="step-50">
+      <div class="num">50</div>
       <div class="body">
         <h3>Deploy the process</h3>
         <p>When the debug run succeeds, click <b>Deploy</b> in the top toolbar of Studio Web to package and publish the Maestro process.</p>
@@ -137,8 +137,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-54">
-      <div class="num">54</div>
+    <div class="step" id="step-51">
+      <div class="num">51</div>
       <div class="body">
         <h3>Confirm the deployment</h3>
         <p>Wait for the Deploy wizard to finish its stages — Setup, Publish package, Configure, Deploy and Activate. When every stage shows a green check you will see <b>Deployment successful</b>.</p>
@@ -160,8 +160,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-55">
-      <div class="num">55</div>
+    <div class="step" id="step-52">
+      <div class="num">52</div>
       <div class="body">
         <h3>Check the deployed process in Orchestrator</h3>
         <p>Open Orchestrator, go to <b>Automations → Processes</b> and confirm the Maestro BPMN process is listed with a green status and the entry point <b>Claim Ready for Review</b>. Your Fraud Detect Agent, Settlement Coded Agent and the supervisor Action App should be listed there as well.</p>
@@ -183,8 +183,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-56">
-      <div class="num">56</div>
+    <div class="step" id="step-53">
+      <div class="num">53</div>
       <div class="body">
         <h3>Trigger the live process</h3>
         <p>The deployed process now starts by itself. In Data Fabric, update an <code>IntakeClaimEntity</code> record and set <code>DecisionInput</code> to <code>READY_FOR_REVIEW</code>. The start event fires, the Fraud Detect Agent runs, and the claim reaches the supervisor as a task.</p>
