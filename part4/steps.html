@@ -112,7 +112,7 @@
         </figure>
     <div class="adm warn">
       <div class="adm-title">⚠️ Before you start</div>
-      <div class="adm-body">Make sure these are ready: the <b>Supervisior_ClaimValidation-App_Latest</b> action app is already deployed on the tenant (you will <b>import</b> it, not build it); and the <code>IntakeClaimEntity</code> entity exists in Data Fabric. You will build the <b>Fraud Detect Agent</b> and the <b>Settlement Coded Agent</b> later in this module, right before the tasks that use them.</div>
+      <div class="adm-body">Make sure these are ready: the <b>ClaimSupervisorReview</b> action app is already deployed on the tenant (you will <b>import</b> it, not build it); and the <code>IntakeClaimEntity</code> entity exists in Data Fabric. You will build the <b>Fraud Detect Agent</b> and the <b>Settlement Coded Agent</b> later in this module, right before the tasks that use them.</div>
     </div>
     <div class="step" id="step-1">
       <div class="num">1</div>
@@ -174,7 +174,7 @@
         </figure>
         <div class="adm tip">
           <div class="adm-title">💡 What you get</div>
-          <div class="adm-body">The imported canvas already contains every task and the gateway, with their names. The following lessons configure each one in order: the start event <b>Claim Ready for Review</b>, <b>Fraud Detection Agent</b>, <b>Download File from Record Field</b>, <b>Supervisior_ClaimValidation</b>, <b>Send Notify Email to Claimant</b>, <b>Reviewer Action Gateway</b>, <b>SettlementCodedAgent</b>, <b>Generate Approval Email</b>, <b>Send Approve Email</b>, and finally you run the whole process (Publish and Trigger).</div>
+          <div class="adm-body">The imported canvas already contains every task and the gateway, with their names. The following lessons configure each one in order: the start event <b>Claim Ready for Review</b>, <b>Fraud Detection Agent</b>, <b>Download File from Record Field</b>, <b>ClaimSupervisorReview</b>, <b>Send Notify Email to Claimant</b>, <b>Reviewer Action Gateway</b>, <b>SettlementCodedAgent</b>, <b>Generate Approval Email</b>, <b>Send Approve Email</b>, and finally you run the whole process (Publish and Trigger).</div>
         </div>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Imported <code>Insurance_Claim_Process.bpmn</code> onto the canvas.</div></div>
@@ -988,7 +988,7 @@ Claim data: {{input.in_ClaimData}}</code></pre>
       <div class="num">18</div>
       <div class="body">
         <h3>Import the existing Action App</h3>
-        <p>Select the task <b>Supervisior_ClaimValidation</b> on the canvas. In the Explorer click <b>+</b> and choose <b>Import existing</b> under <b>BUILDING BLOCKS</b>.</p>
+        <p>Select the task <b>ClaimSupervisorReview</b> on the canvas. In the Explorer click <b>+</b> and choose <b>Import existing</b> under <b>BUILDING BLOCKS</b>.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -1001,7 +1001,7 @@ Claim data: {{input.in_ClaimData}}</code></pre>
           </div>
           <figcaption>Explorer → + → Import existing.</figcaption>
         </figure>
-        <p>In the <b>Add project</b> dialog search for <code>Super</code> and tick <b>Supervisior_ClaimValidation-App_Latest</b>, then add it.</p>
+        <p>In the <b>Add project</b> dialog search for <code>Super</code> and tick <b>ClaimSupervisorReview</b>, then add it.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -1010,16 +1010,12 @@ Claim data: {{input.in_ClaimData}}</code></pre>
               <span class="c" style="background:#28C840"></span>
               <span class="url">Studio Web · Add project</span>
             </div>
-            <img src="assets/maestro_4_supervisor_validation_app_step2_choose_supervisor_action_app.png" alt="Select Supervisior_ClaimValidation-App_Latest." loading="lazy" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/m_sup_addproject.png" alt="Select ClaimSupervisorReview." loading="lazy" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>Select Supervisior_ClaimValidation-App_Latest.</figcaption>
+          <figcaption>Select ClaimSupervisorReview.</figcaption>
         </figure>
-        <div class="adm note">
-          <div class="adm-title">📝 Spelling</div>
-          <div class="adm-body">The app and the canvas task are spelled <b>Supervisior</b> (with an extra "i") in the tenant and in the imported BPMN. Select them exactly as they appear.</div>
-        </div>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Imported <code>Supervisior_ClaimValidation-App_Latest</code> with <b>Import existing</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Imported <code>ClaimSupervisorReview</code> with <b>Import existing</b>.</div></div>
         </div>
       </div>
     </div>
@@ -1041,7 +1037,7 @@ Claim data: {{input.in_ClaimData}}</code></pre>
           </div>
           <figcaption>Action → Human Task.</figcaption>
         </figure>
-        <p>Set <b>Action</b> to <b>Create action app task</b>, pick the imported app under <b>Action</b>, enter the <b>Task title</b> <code>Supervisor_Validation_Task</code>, and set <b>Assignment Criteria</b> = <b>User</b> with <b>Assignee</b> = yourself (so you can complete the task during testing).</p>
+        <p>Set <b>Action</b> to <b>Create action app task</b>, pick the imported app under <b>Action</b>, enter the <b>Task title</b> <code>Claim_Validation</code>, and set <b>Assignment Criteria</b> = <b>User</b> with <b>Assignee</b> = yourself (so you can complete the task during testing).</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -1050,7 +1046,7 @@ Claim data: {{input.in_ClaimData}}</code></pre>
               <span class="c" style="background:#28C840"></span>
               <span class="url">Maestro · Human task</span>
             </div>
-            <img src="assets/maestro_4_supervisor_validation_app_step4_config_app.png" alt="Action app, task title, and assignee." loading="lazy" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/m_sup_config.png" alt="Action app, task title, and assignee." loading="lazy" style="display:block;max-width:100%;height:auto;">
           </div>
           <figcaption>Action app, task title, and assignee.</figcaption>
         </figure>
