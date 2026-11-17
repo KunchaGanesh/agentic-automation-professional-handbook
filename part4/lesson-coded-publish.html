@@ -75,7 +75,7 @@
         <div class="copy-wrap">
           <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cp-code-1')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
+          <div class="filename">PowerShell / Command Prompt</div>
           <pre id="cp-code-1"><code>uip codedagent deploy --my-workspace</code></pre>
         </div>
         </div>
@@ -93,7 +93,7 @@
         <div class="copy-wrap">
           <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cp-code-2')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
+          <div class="filename">PowerShell / Command Prompt</div>
           <pre id="cp-code-2"><code>uip codedagent invoke agent --file input.json</code></pre>
         </div>
         </div>
@@ -153,10 +153,10 @@
             <tr><td><code>uip --version</code></td><td>A UiPath CLI version is displayed.</td></tr>
             <tr><td><code>uip codedagent --help</code></td><td>The codedagent command list is displayed.</td></tr>
             <tr><td><code>uv venv --python 3.13</code></td><td>A <code>.venv</code> folder is created.</td></tr>
-            <tr><td><code>.\.venv\Scripts\Activate.ps1</code></td><td>The prompt begins with <code>(.venv)</code>.</td></tr>
+            <tr><td><code>.\.venv\Scripts\Activate.ps1</code> (PowerShell) or <code>call .venv\Scripts\activate.bat</code> (Command Prompt)</td><td>The prompt begins with <code>(.venv)</code>.</td></tr>
             <tr><td><code>uv pip install uipath-langchain</code></td><td>The package and dependencies install without an ERROR.</td></tr>
             <tr><td><code>uip codedagent setup --force</code></td><td>A success message confirms the Python environment is registered.</td></tr>
-            <tr><td><code>uip codedagent new $projectName</code></td><td><code>main.py</code> and <code>langgraph.json</code> are created.</td></tr>
+            <tr><td><code>uip codedagent new $projectName</code> (PowerShell) or <code>uip codedagent new %projectName%</code> (Command Prompt)</td><td><code>main.py</code> and <code>langgraph.json</code> are created.</td></tr>
             <tr><td><code>uip login --organization "TPEN LABS" --tenant "AgenticPractice"</code></td><td>A browser opens; after sign-in the command returns successfully.</td></tr>
             <tr><td><code>uip codedagent list-models</code></td><td>Available model identifiers are listed.</td></tr>
             <tr><td><code>uip codedagent init</code></td><td><code>entry-points.json</code> and graph metadata are created; the graph shows START, settle_claim, END.</td></tr>

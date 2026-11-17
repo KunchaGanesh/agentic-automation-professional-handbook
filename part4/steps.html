@@ -1445,9 +1445,18 @@ New-Item -ItemType Directory -Force -Path $agentRoot | Out-Null
 Set-Location $agentRoot</code></pre>
         </div>
         </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-2')"></button>
+<div class="highlight">
+          <div class="filename">Command Prompt</div>
+          <pre id="cb-code-2"><code>set "agentRoot=%USERPROFILE%\UiPathAgents"
+if not exist "%agentRoot%" mkdir "%agentRoot%"
+cd /d "%agentRoot%"</code></pre>
+        </div>
+        </div>
         <div class="adm note">
-          <div class="adm-title">📝 Command Prompt alternative</div>
-          <div class="adm-body">Use <code>set "agentRoot=%USERPROFILE%\UiPathAgents"</code>, then <code>if not exist "%agentRoot%" mkdir "%agentRoot%"</code>, then <code>cd /d "%agentRoot%"</code>. Command Prompt uses <code>%USERPROFILE%</code> and <code>cd /d</code> instead of <code>$HOME</code>, <code>Join-Path</code> and <code>Set-Location</code>.</div>
+          <div class="adm-title">📝 Which window?</div>
+          <div class="adm-body">Use <b>one</b> of the two blocks. Command Prompt uses <code>%USERPROFILE%</code> and <code>cd /d</code> instead of <code>$HOME</code>, <code>Join-Path</code> and <code>Set-Location</code>.</div>
         </div>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Worked in a folder I own, in a normal (not Administrator) window.</div></div>
@@ -1461,28 +1470,28 @@ Set-Location $agentRoot</code></pre>
         <h3>Install and verify the tools</h3>
         <p>Run the version checks first. If Python or npm is already installed, keep it and continue. Only install a missing tool.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-2')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-3')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-2"><code>python --version
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-3"><code>python --version
 npm --version</code></pre>
         </div>
         </div>
         <p>If either command is not recognized, install the missing tool with Windows Package Manager (winget):</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-3')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-4')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-3"><code>winget install --id Python.Python.3.13 -e
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-4"><code>winget install --id Python.Python.3.13 -e
 winget install --id OpenJS.NodeJS.LTS -e</code></pre>
         </div>
         </div>
         <p>Close and reopen PowerShell, then run the version checks again. If winget is unavailable, install Python from python.org and Node.js LTS from nodejs.org. Then install uv and the UiPath CLI:</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-4')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-5')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-4"><code>python -m pip install --upgrade uv
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-5"><code>python -m pip install --upgrade uv
 npm install -g @uipath/cli
 uip tools install @uipath/codedagent-tool
 uip --version
@@ -1506,10 +1515,10 @@ uip codedagent --help</code></pre>
         <h3>Create the project and virtual environment</h3>
         <p>Replace <code>your_name</code> with your own name — letters, numbers and underscores only, no spaces (for example <code>Minal</code> or <code>Priya_S</code>). Type the name only; do not add angle brackets.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-5')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-6')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
-          <pre id="cb-code-5"><code>$projectName = "Settlement_CodedAgent_your_name"
+          <pre id="cb-code-6"><code>$projectName = "Settlement_CodedAgent_your_name"
 New-Item -ItemType Directory -Force -Path $projectName | Out-Null
 Set-Location $projectName
 uv venv --python 3.13
@@ -1517,13 +1526,24 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\.venv\Scripts\Activate.ps1</code></pre>
         </div>
         </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-7')"></button>
+<div class="highlight">
+          <div class="filename">Command Prompt</div>
+          <pre id="cb-code-7"><code>set "projectName=Settlement_CodedAgent_your_name"
+mkdir "%projectName%"
+cd /d "%projectName%"
+uv venv --python 3.13
+call .venv\Scripts\activate.bat</code></pre>
+        </div>
+        </div>
         <div class="adm warn">
           <div class="adm-title">⚠️ Check your prompt</div>
           <div class="adm-body">Your prompt should now start with <code>(.venv)</code>. Do not continue until it does. The execution-policy command affects only the current PowerShell window.</div>
         </div>
         <div class="adm note">
-          <div class="adm-title">📝 Command Prompt alternative</div>
-          <div class="adm-body">Replace the last three lines with <code>uv venv --python 3.13</code> and <code>call .venv\Scripts\activate.bat</code>. Command Prompt does not use <code>Set-ExecutionPolicy</code>.</div>
+          <div class="adm-title">📝 PowerShell vs Command Prompt</div>
+          <div class="adm-body">Command Prompt does not use <code>Set-ExecutionPolicy</code>. The <code>call</code> command activates the batch file in the current window. In PowerShell, the execution-policy command affects only that window.</div>
         </div>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Created the project folder with my name and activated the virtual environment (prompt shows <code>(.venv)</code>).</div></div>
@@ -1536,10 +1556,10 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
       <div class="body">
         <h3>Install the agent framework</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-6')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-8')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-6"><code>uv pip install uipath-langchain
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-8"><code>uv pip install uipath-langchain
 uv pip install uipath-dev
 uip codedagent setup --force</code></pre>
         </div>
@@ -1559,11 +1579,19 @@ uip codedagent setup --force</code></pre>
       <div class="body">
         <h3>Scaffold the coded agent</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-7')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-9')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
-          <pre id="cb-code-7"><code>uip codedagent new $projectName
+          <pre id="cb-code-9"><code>uip codedagent new $projectName
 Get-ChildItem</code></pre>
+        </div>
+        </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-10')"></button>
+<div class="highlight">
+          <div class="filename">Command Prompt</div>
+          <pre id="cb-code-10"><code>uip codedagent new %projectName%
+dir</code></pre>
         </div>
         </div>
         <p>The CLI creates the required project files: <code>pyproject.toml</code> stores project metadata and dependencies, <code>main.py</code> contains the agent logic, and <code>langgraph.json</code> identifies the graph object for UiPath. Keep all three.</p>
@@ -1578,10 +1606,10 @@ Get-ChildItem</code></pre>
       <div class="body">
         <h3>Sign in and select an available model</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-8')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-11')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-8"><code>uip login --organization "TPEN LABS" --tenant "AgenticPractice"
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-11"><code>uip login --organization "TPEN LABS" --tenant "AgenticPractice"
 uip codedagent list-models</code></pre>
         </div>
         </div>
@@ -1602,17 +1630,17 @@ uip codedagent list-models</code></pre>
         <h3>Write main.py</h3>
         <p>Run <code>notepad main.py</code>. Press <b>Ctrl+A</b>, delete everything, paste the complete code below (from <code>import json</code> through <code>graph = builder.compile()</code>), save and close Notepad. Nothing in this file needs your name.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-9')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-12')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-9"><code>notepad main.py</code></pre>
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-12"><code>notepad main.py</code></pre>
         </div>
         </div>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-10')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-13')"></button>
 <div class="highlight">
           <div class="filename">main.py</div>
-          <pre id="cb-code-10"><code>import json
+          <pre id="cb-code-13"><code>import json
 import re
 from typing import TypedDict
 
@@ -1723,11 +1751,19 @@ graph = builder.compile()
       <div class="body">
         <h3>Initialize the schemas</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-11')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-14')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
-          <pre id="cb-code-11"><code>uip codedagent init
+          <pre id="cb-code-14"><code>uip codedagent init
 Get-Content entry-points.json</code></pre>
+        </div>
+        </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-15')"></button>
+<div class="highlight">
+          <div class="filename">Command Prompt</div>
+          <pre id="cb-code-15"><code>uip codedagent init
+type entry-points.json</code></pre>
         </div>
         </div>
         <p>This generates the input and output schema metadata. Run it again after changing field names, types, the graph configuration or the entry-point signature.</p>
@@ -1755,17 +1791,17 @@ Get-Content entry-points.json</code></pre>
         <h3>Create one input file for all tests</h3>
         <p>You will use the same <code>input.json</code> for all three tests and edit it between runs.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-12')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-16')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-12"><code>notepad input.json</code></pre>
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-16"><code>notepad input.json</code></pre>
         </div>
         </div>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-13')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-17')"></button>
 <div class="highlight">
           <div class="filename">input.json</div>
-          <pre id="cb-code-13"><code>{
+          <pre id="cb-code-17"><code>{
   "insurance_type": "Theft",
   "coverage": "Full",
   "claim_amount": 10000
@@ -1784,10 +1820,10 @@ Get-Content entry-points.json</code></pre>
       <div class="body">
         <h3>Run test 1: Theft / Full</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-14')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-18')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-14"><code>uip codedagent run agent --file input.json</code></pre>
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-18"><code>uip codedagent run agent --file input.json</code></pre>
         </div>
         </div>
         <div class="adm tip">
@@ -1810,17 +1846,17 @@ Get-Content entry-points.json</code></pre>
         <h3>Run test 2: Water damage / Partial</h3>
         <p>Run <code>notepad input.json</code>, replace the content with the block below, save and close, then run the agent again.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-15')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-19')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-15"><code>notepad input.json</code></pre>
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-19"><code>notepad input.json</code></pre>
         </div>
         </div>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-16')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-20')"></button>
 <div class="highlight">
           <div class="filename">input.json</div>
-          <pre id="cb-code-16"><code>{
+          <pre id="cb-code-20"><code>{
   "insurance_type": "water damage",
   "coverage": "Partial",
   "claim_amount": 2500
@@ -1828,10 +1864,10 @@ Get-Content entry-points.json</code></pre>
         </div>
         </div>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-17')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-21')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-17"><code>uip codedagent run agent --file input.json</code></pre>
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-21"><code>uip codedagent run agent --file input.json</code></pre>
         </div>
         </div>
         <div class="adm tip">
@@ -1850,17 +1886,17 @@ Get-Content entry-points.json</code></pre>
         <h3>Run test 3: Travel delay / Full</h3>
         <p>Edit the same file once more, save and close, then run the agent.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-18')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-22')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-18"><code>notepad input.json</code></pre>
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-22"><code>notepad input.json</code></pre>
         </div>
         </div>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-19')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-23')"></button>
 <div class="highlight">
           <div class="filename">input.json</div>
-          <pre id="cb-code-19"><code>{
+          <pre id="cb-code-23"><code>{
   "insurance_type": "Travel delay",
   "coverage": "Full",
   "claim_amount": 800
@@ -1868,10 +1904,10 @@ Get-Content entry-points.json</code></pre>
         </div>
         </div>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-20')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-24')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-20"><code>uip codedagent run agent --file input.json</code></pre>
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-24"><code>uip codedagent run agent --file input.json</code></pre>
         </div>
         </div>
         <div class="adm tip">
@@ -1896,11 +1932,12 @@ Get-Content entry-points.json</code></pre>
           <div class="adm-title">⚠️ Skip during the workshop</div>
           <div class="adm-body">Skip this step in the beginner session. It requires evaluator configuration files and is not needed to prove that the coded agent works.</div>
         </div>
+        <p><b>PowerShell</b> creates the file in one command:</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-21')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-25')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
-          <pre id="cb-code-21"><code>New-Item -ItemType Directory -Force -Path "evaluations\eval-sets" | Out-Null
+          <pre id="cb-code-25"><code>New-Item -ItemType Directory -Force -Path "evaluations\eval-sets" | Out-Null
 @'
 {
   "version": "1.0",
@@ -1914,11 +1951,36 @@ Get-Content entry-points.json</code></pre>
 '@ | Set-Content -Encoding utf8 "evaluations\eval-sets\smoke-test.json"</code></pre>
         </div>
         </div>
+        <p><b>Command Prompt</b> creates the folder, then you paste the JSON into Notepad:</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-22')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-26')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="cb-code-22"><code>uip codedagent eval agent evaluations\eval-sets\smoke-test.json --no-report</code></pre>
+          <div class="filename">Command Prompt</div>
+          <pre id="cb-code-26"><code>mkdir evaluations\eval-sets
+notepad evaluations\eval-sets\smoke-test.json</code></pre>
+        </div>
+        </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-27')"></button>
+<div class="highlight">
+          <div class="filename">smoke-test.json</div>
+          <pre id="cb-code-27"><code>{
+  "version": "1.0",
+  "id": "smoke-test",
+  "name": "Claims Settlement Smoke Test",
+  "evaluations": [
+    {"id": "theft-full", "name": "Theft full", "inputs": {"insurance_type": "Theft", "coverage": "Full", "claim_amount": 10000}},
+    {"id": "water-partial", "name": "Water partial", "inputs": {"insurance_type": "water damage", "coverage": "Partial", "claim_amount": 2500}}
+  ]
+}</code></pre>
+        </div>
+        </div>
+        <p>Save and close Notepad, then run the evaluation (same command in both):</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cb-code-28')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="cb-code-28"><code>uip codedagent eval agent evaluations\eval-sets\smoke-test.json --no-report</code></pre>
         </div>
         </div>
       </div>
@@ -1936,7 +1998,7 @@ Get-Content entry-points.json</code></pre>
         <div class="copy-wrap">
           <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cp-code-1')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
+          <div class="filename">PowerShell / Command Prompt</div>
           <pre id="cp-code-1"><code>uip codedagent deploy --my-workspace</code></pre>
         </div>
         </div>
@@ -1954,7 +2016,7 @@ Get-Content entry-points.json</code></pre>
         <div class="copy-wrap">
           <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'cp-code-2')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
+          <div class="filename">PowerShell / Command Prompt</div>
           <pre id="cp-code-2"><code>uip codedagent invoke agent --file input.json</code></pre>
         </div>
         </div>
@@ -2014,10 +2076,10 @@ Get-Content entry-points.json</code></pre>
             <tr><td><code>uip --version</code></td><td>A UiPath CLI version is displayed.</td></tr>
             <tr><td><code>uip codedagent --help</code></td><td>The codedagent command list is displayed.</td></tr>
             <tr><td><code>uv venv --python 3.13</code></td><td>A <code>.venv</code> folder is created.</td></tr>
-            <tr><td><code>.\.venv\Scripts\Activate.ps1</code></td><td>The prompt begins with <code>(.venv)</code>.</td></tr>
+            <tr><td><code>.\.venv\Scripts\Activate.ps1</code> (PowerShell) or <code>call .venv\Scripts\activate.bat</code> (Command Prompt)</td><td>The prompt begins with <code>(.venv)</code>.</td></tr>
             <tr><td><code>uv pip install uipath-langchain</code></td><td>The package and dependencies install without an ERROR.</td></tr>
             <tr><td><code>uip codedagent setup --force</code></td><td>A success message confirms the Python environment is registered.</td></tr>
-            <tr><td><code>uip codedagent new $projectName</code></td><td><code>main.py</code> and <code>langgraph.json</code> are created.</td></tr>
+            <tr><td><code>uip codedagent new $projectName</code> (PowerShell) or <code>uip codedagent new %projectName%</code> (Command Prompt)</td><td><code>main.py</code> and <code>langgraph.json</code> are created.</td></tr>
             <tr><td><code>uip login --organization "TPEN LABS" --tenant "AgenticPractice"</code></td><td>A browser opens; after sign-in the command returns successfully.</td></tr>
             <tr><td><code>uip codedagent list-models</code></td><td>Available model identifiers are listed.</td></tr>
             <tr><td><code>uip codedagent init</code></td><td><code>entry-points.json</code> and graph metadata are created; the graph shows START, settle_claim, END.</td></tr>
