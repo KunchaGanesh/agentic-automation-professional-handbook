@@ -1,6 +1,7 @@
 /* ===========================================================
    UiPath Learning Workbook — UiPath brand styling
-   Colors: Robotic Orange / Deep Blue / Agentic Teal.
+   Colors: UiPath brand palette only (tokens below) - UiPath Orange,
+   Ink, Deep Blue, Teal and neutral greys. Do not hard-code other colors.
    Fonts: Poppins (headlines), Inter (body), Arial fallback.
    =========================================================== */
 @font-face{font-family:"Inter";src:url("fonts/Inter-Variable.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
@@ -27,6 +28,8 @@
   --bg-soft:#F6F6F6;
   --code-bg:#F6F6F6;
   --code-border:#D9D9D9;
+  --code-text:#182126;
+  --chrome-bg:#EEEEEE;
   --sidebar-w:260px;
   --toc-w:210px;
   --header-h:52px;
@@ -152,13 +155,13 @@ ul.clean li{position:relative;padding:5px 0 5px 24px;font-size:15.5px}
 ul.clean li::before{content:"";position:absolute;left:2px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--up-orange)}
 
 /* inline code */
-code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;padding:.5px 6px;font-family:Consolas,"SF Mono",Menlo,monospace;font-size:13.5px;color:#A32200}
+code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;padding:.5px 6px;font-family:Consolas,"SF Mono",Menlo,monospace;font-size:13.5px;color:var(--up-orange-dark)}
 
 /* ---------- Code blocks (MkDocs style, light) ---------- */
 .highlight{margin:16px 0;border:1px solid var(--code-border);border-radius:9px;overflow:hidden;background:var(--code-bg)}
-.highlight .filename{background:#EEF1F5;border-bottom:1px solid var(--code-border);padding:7px 14px;font-family:Consolas,monospace;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.highlight .filename{background:var(--chrome-bg);border-bottom:1px solid var(--code-border);padding:7px 14px;font-family:Consolas,monospace;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:8px}
 .highlight .filename::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--up-orange)}
-.highlight pre{margin:0;padding:14px 16px;overflow-x:auto;font-family:Consolas,"SF Mono",Menlo,monospace;font-size:13.5px;line-height:1.6;color:#24292E}
+.highlight pre{margin:0;padding:14px 16px;overflow-x:auto;font-family:Consolas,"SF Mono",Menlo,monospace;font-size:13.5px;line-height:1.6;color:var(--code-text)}
 .highlight code{background:none;border:0;padding:0;color:inherit;font-size:inherit}
 /* pygments-ish tokens */
 .c{color:#6A737D;font-style:italic}   /* comment */
@@ -205,8 +208,12 @@ td .no{color:var(--up-orange-dark);font-weight:700}
 figure{margin:18px 0}
 .shot{display:inline-block;max-width:100%;border:1px solid var(--line);border-radius:11px;overflow:hidden;box-shadow:0 6px 18px rgba(20,25,40,.08)}
 figure{display:block;}
-.shot .chrome{background:#EDEFF3;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:8px 12px}
+.shot .chrome{background:var(--chrome-bg);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:8px 12px}
 .shot .chrome .c{width:11px;height:11px;border-radius:50%}
+/* Window dots use UiPath colors instead of macOS red/yellow/green */
+.shot .chrome .c:nth-child(1){background:var(--up-orange)!important}
+.shot .chrome .c:nth-child(2){background:var(--teal)!important}
+.shot .chrome .c:nth-child(3){background:var(--blue-dark)!important}
 .shot .chrome .url{margin-left:10px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:3px 12px;font-size:11.5px;color:var(--muted);font-family:Consolas,monospace;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;font-style:italic}
 
@@ -287,3 +294,37 @@ figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;
 .kv{display:block;font-size:13px;line-height:1.5}
 .copy-btn.inline-copy{position:static;display:inline-flex;vertical-align:middle;width:24px;height:24px;margin-left:6px;border-radius:5px}
 .copy-btn.inline-copy::before{width:13px;height:13px}
+
+/* ---------- Collapsible panels: lesson menu (left) and On this page (right) ---------- */
+.md-main.has-toc{grid-template-columns:var(--sidebar-w) minmax(0,1fr) var(--toc-w)}
+body.nav-hidden .md-main{grid-template-columns:0 minmax(0,1fr)}
+body.nav-hidden .md-main.has-toc{grid-template-columns:0 minmax(0,1fr) var(--toc-w)}
+body.toc-hidden .md-main.has-toc{grid-template-columns:var(--sidebar-w) minmax(0,1fr) 0}
+body.nav-hidden.toc-hidden .md-main.has-toc{grid-template-columns:0 minmax(0,1fr) 0}
+body.nav-hidden .md-sidebar--primary,body.toc-hidden .md-sidebar--toc{visibility:hidden;overflow:hidden;padding:0;border:0}
+.md-main{transition:grid-template-columns .2s ease}
+.md-sidebar--toc{background:var(--bg);font-size:13.5px}
+.toc-head{display:flex;align-items:center;justify-content:space-between;margin:0 0 8px}
+.toc-title{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.toc-list{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.toc-list a{display:flex;gap:8px;padding:5px 8px 5px 12px;margin-left:-2px;border-left:2px solid transparent;color:var(--muted);line-height:1.35}
+.toc-list a:hover{color:var(--text);text-decoration:none;border-left-color:var(--line)}
+.toc-list a.active{color:var(--up-orange-dark);border-left-color:var(--up-orange);font-weight:600}
+.toc-list .n{flex:0 0 auto;min-width:1.6em;color:var(--faint);font-variant-numeric:tabular-nums}
+.toc-list a.active .n{color:var(--up-orange-dark)}
+.panel-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:28px;padding:0 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--muted);font:600 12px var(--font-body);cursor:pointer}
+.panel-btn:hover{border-color:var(--up-orange);color:var(--up-orange-dark);background:var(--up-orange-soft)}
+.panel-btn:focus-visible{outline:2px solid var(--up-orange);outline-offset:2px}
+.md-header .nav-toggle{background:transparent;border-color:rgba(255,255,255,.25);color:#fff;height:32px;width:34px;padding:0;font-size:16px}
+.md-header .nav-toggle:hover{background:rgba(255,255,255,.12);color:#fff;border-color:var(--up-orange)}
+.toc-tab{position:fixed;right:0;top:calc(var(--header-h) + 18px);z-index:40;display:none;border-right:0;border-radius:6px 0 0 6px;box-shadow:0 2px 8px rgba(24,33,38,.12)}
+body.toc-hidden .toc-tab{display:inline-flex}
+@media(max-width:1080px){
+  .md-main.has-toc,body.toc-hidden .md-main.has-toc{grid-template-columns:var(--sidebar-w) minmax(0,1fr)}
+  body.nav-hidden .md-main.has-toc{grid-template-columns:0 minmax(0,1fr)}
+  .md-sidebar--toc,.toc-tab{display:none!important}
+}
+@media(max-width:860px){
+  .md-main.has-toc,body.nav-hidden .md-main,body.nav-hidden .md-main.has-toc{grid-template-columns:1fr}
+  body.nav-hidden .md-sidebar--primary{display:none}
+}

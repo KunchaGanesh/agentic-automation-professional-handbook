@@ -185,4 +185,75 @@
   } else {
     initInlineCopy();
   }
+
+  /* ---------- 4. Collapsible panels ---------- */
+  var PANEL_KEY = 'aap-workbook-panels-v1';
+  function loadPanels() { try { return JSON.parse(window.localStorage.getItem(PANEL_KEY) || '{}') || {}; } catch (e) { return {}; } }
+  function savePanels(p) { try { window.localStorage.setItem(PANEL_KEY, JSON.stringify(p)); } catch (e) {} }
+
+  function initPanels() {
+    var state = loadPanels();
+    var body = document.body, main = document.querySelector('.md-main'), content = document.querySelector('.md-content');
+    if (!main || !content) return;
+
+    var header = document.querySelector('.md-header');
+    if (header && !header.querySelector('.nav-toggle')) {
+      var nb = document.createElement('button');
+      nb.type = 'button'; nb.className = 'panel-btn nav-toggle'; nb.innerHTML = '&#9776;';
+      header.insertBefore(nb, header.firstChild);
+      var setNav = function (hidden) {
+        body.classList.toggle('nav-hidden', hidden);
+        nb.title = hidden ? 'Show lesson menu' : 'Hide lesson menu';
+        nb.setAttribute('aria-label', nb.title);
+        nb.setAttribute('aria-expanded', hidden ? 'false' : 'true');
+      };
+      setNav(!!state.navHidden);
+      nb.addEventListener('click', function () {
+        state.navHidden = !body.classList.contains('nav-hidden'); setNav(state.navHidden); savePanels(state);
+      });
+    }
+
+    var heads = content.querySelectorAll('.step .body > h3, .md-content > h2, .md-content > h3');
+    var items = [];
+    for (var i = 0; i < heads.length; i++) {
+      var h = heads[i], stepEl = h.closest ? h.closest('.step') : null;
+      var target = stepEl || h;
+      if (!target.id) target.id = 'sec-' + (i + 1);
+      var numEl = stepEl ? stepEl.querySelector('.num') : null;
+      items.push({ id: target.id, text: h.textContent, num: numEl ? numEl.textContent : '', el: target });
+    }
+    if (items.length < 2) return;
+    var aside = document.createElement('aside');
+    aside.className = 'md-sidebar md-sidebar--toc';
+    aside.setAttribute('aria-label', 'On this page');
+    var html = '<div class="toc-head"><span class="toc-title">On this page</span><button type="button" class="panel-btn toc-hide" title="Hide this panel" aria-label="Hide On this page panel">Hide &#8250;</button></div><ul class="toc-list">';
+    items.forEach(function (it) {
+      html += '<li><a href="#' + it.id + '"><span class="n">' + it.num + '</span><span>' + it.text.replace(/</g, '&lt;') + '</span></a></li>';
+    });
+    aside.innerHTML = html + '</ul>';
+    main.appendChild(aside);
+    main.classList.add('has-toc');
+    var tab = document.createElement('button');
+    tab.type = 'button'; tab.className = 'panel-btn toc-tab'; tab.innerHTML = '&#8249; On this page';
+    tab.title = 'Show On this page panel'; tab.setAttribute('aria-label', tab.title);
+    body.appendChild(tab);
+    var setToc = function (hidden) { body.classList.toggle('toc-hidden', hidden); };
+    setToc(!!state.tocHidden);
+    aside.querySelector('.toc-hide').addEventListener('click', function () { state.tocHidden = true; setToc(true); savePanels(state); });
+    tab.addEventListener('click', function () { state.tocHidden = false; setToc(false); savePanels(state); });
+
+    var links = aside.querySelectorAll('.toc-list a');
+    var onScroll = function () {
+      var y = window.scrollY + 90, cur = 0;
+      for (var k = 0; k < items.length; k++) { if (items[k].el.getBoundingClientRect().top + window.scrollY <= y) cur = k; }
+      for (var m = 0; m < links.length; m++) links[m].classList.toggle('active', m === cur);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPanels);
+  } else {
+    initPanels();
+  }
 })();
