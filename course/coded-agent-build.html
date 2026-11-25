@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build the Coded Agent Locally · Insurance Claim Solution</title>
+<link rel="stylesheet" href="../assets/course.css?v=20261125">
+</head>
+<body>
+
+<header class="md-header">
+  <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
+  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+</header>
+
+<div class="md-main">
+  <nav class="md-sidebar md-sidebar--primary">
+<div class="nav">
+  <div class="rise-course-block">
+    <p class="rise-course-title">Insurance Claim Solution</p>
+    <div class="rise-progress"><div class="rise-progress-bar"><div class="rise-progress-fill" style="width:0%"></div></div><span class="rise-progress-label">0% COMPLETE</span></div>
+  </div>
+  <a class="rise-home" href="../index.html">Home</a>
+  <a class="rise-home" href="../work-environment.html">Work Environment</a>
+  <details open>
+    <summary>Insurance Claim Solution</summary>
+    <div class="group-items">
+      <div class="nav-section">Claim Intake</div>
+      <a class="lesson-row" href="concepts-conversational.html"><span class="lesson-ico">1</span><span class="lesson-label">Conversational Agent Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="create-claim-agent.html"><span class="lesson-ico">2</span><span class="lesson-label">Create the Insurance Claim Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="system-prompt.html"><span class="lesson-ico">3</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="context-grounding.html"><span class="lesson-ico">4</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="tools.html"><span class="lesson-ico">5</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="test-claim-agent.html"><span class="lesson-ico">6</span><span class="lesson-label">Test the Insurance Claim Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="deploy-agent.html"><span class="lesson-ico">7</span><span class="lesson-label">Deploy and Get Agent ID</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="import-claim-app.html"><span class="lesson-ico">8</span><span class="lesson-label">Import the Claim App</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="observe-agent.html"><span class="lesson-ico">9</span><span class="lesson-label">Observe Your Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <div class="nav-section">Claim Approval Process</div>
+      <a class="lesson-row" href="concepts-maestro.html"><span class="lesson-ico">10</span><span class="lesson-label">Maestro BPMN Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="import-bpmn.html"><span class="lesson-ico">11</span><span class="lesson-label">Import the BPMN File</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="start-event.html"><span class="lesson-ico">12</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="fraud-agent-build.html"><span class="lesson-ico">13</span><span class="lesson-label">Build the Fraud Detect Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="fraud-agent-evaluate.html"><span class="lesson-ico">14</span><span class="lesson-label">Test and Evaluate the Fraud Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="fraud-agent-task.html"><span class="lesson-ico">15</span><span class="lesson-label">Fraud Detection Agent Task</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="download-claim-file.html"><span class="lesson-ico">16</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="supervisor-validation.html"><span class="lesson-ico">17</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="notify-claimant.html"><span class="lesson-ico">18</span><span class="lesson-label">Notify the Claimant</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="reviewer-gateway.html"><span class="lesson-ico">19</span><span class="lesson-label">Reviewer Gateway</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <div class="nav-section">Settlement Coded Agent</div>
+      <a class="lesson-row" href="coded-agent-create.html"><span class="lesson-ico">20</span><span class="lesson-label">Create the Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="coded-agent-build.html"><span class="lesson-ico">21</span><span class="lesson-label">Build the Coded Agent Locally</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="coded-agent-test-push.html"><span class="lesson-ico">22</span><span class="lesson-label">Test and Push the Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="coded-agent-task.html"><span class="lesson-ico">23</span><span class="lesson-label">Settlement Coded Agent Task</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <div class="nav-section">Decision and Deployment</div>
+      <a class="lesson-row" href="generate-email.html"><span class="lesson-ico">24</span><span class="lesson-label">Generate the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="send-email.html"><span class="lesson-ico">25</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="debug-deploy.html"><span class="lesson-ico">26</span><span class="lesson-label">Debug and Deploy the Solution</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="complete.html"><span class="lesson-ico">27</span><span class="lesson-label">Course Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+</div>
+  </nav>
+
+  <main class="md-content">
+    <span class="eyebrow">Settlement Coded Agent · Lesson 21 of 26</span>
+    <h1>Build the Coded Agent Locally</h1>
+    <div class="rise-divider"></div>
+        <p>Now build the agent on your own Windows machine. Every setup step shows a <b>PowerShell</b> and a <b>Command Prompt</b> version that do the same thing. Choose one shell and use only its commands for the rest of the exercise. All <code>uip</code> and <code>uipath</code> commands are identical in both shells.</p>
+        <h3>Prerequisites</h3>
+        <table>
+          <thead><tr><th>Requirement</th><th>Why it is needed</th></tr></thead>
+          <tbody>
+            <tr><td>UiPath Automation Cloud access (organization <code>tpenlabs</code>, tenant <code>AgenticPractice</code>)</td><td>Sign-in, model access and the Studio Web project.</td></tr>
+            <tr><td>Python 3.13, Node.js (npm), uv and the UiPath CLI (<code>uip</code>)</td><td>Run, test and push the coded agent. The first step shows how to check and install them.</td></tr>
+            <tr><td>The <code>Insurance_Claim_Solution</code> with its Maestro BPMN process</td><td>The coded agent is added to, and deployed with, this solution.</td></tr>
+            <tr><td>Permission to use the instructor-approved LLM</td><td>The agent calls it through the UiPath LLM Gateway.</td></tr>
+          </tbody>
+        </table>
+    <div class="step" id="step-50">
+      <div class="num">50</div>
+      <div class="body">
+        <h3>Check and install the required tools</h3>
+        <p>Do this once per machine. Run each check; if it prints a version number the tool is installed and you can skip its install.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-2')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="gen-code-2"><code>python --version
+npm --version
+uv --version
+uip --version</code></pre>
+        </div>
+        </div>
+        <table>
+          <thead><tr><th>Command</th><th>Good result</th><th>If not recognized</th></tr></thead>
+          <tbody>
+            <tr><td><code>python --version</code></td><td>Python 3.13.x (3.11 or 3.12 also works)</td><td><code>winget install -e --id Python.Python.3.13</code></td></tr>
+            <tr><td><code>npm --version</code></td><td>A version number, e.g. 10.x</td><td><code>winget install -e --id OpenJS.NodeJS.LTS</code></td></tr>
+            <tr><td><code>uv --version</code></td><td>uv 0.x.x</td><td><code>winget install -e --id astral-sh.uv</code></td></tr>
+            <tr><td><code>uip --version</code></td><td>A version number, e.g. 1.206.0</td><td><code>npm install -g @uipath/cli</code></td></tr>
+          </tbody>
+        </table>
+        <p>Make sure the coded-agent commands are available, and install them if <code>codedagent-tool</code> is not listed:</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-3')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="gen-code-3"><code>uip tools list
+uip tools install @uipath/codedagent-tool</code></pre>
+        </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">📝 Install tips</div>
+          <div class="adm-body">If winget is missing or blocked, install Python from python.org (tick <b>Add python.exe to PATH</b>) and Node.js LTS from nodejs.org, or ask your instructor. uv can also be installed with <code>python -m pip install uv</code>. If <code>python --version</code> opens the Microsoft Store, turn off the python.exe App execution aliases. If PowerShell says <i>npm.ps1 cannot be loaded</i>, run <code>Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</code> once, or use Command Prompt.</div>
+        </div>
+        <p>Installers update PATH only for new windows: close every shell, open a new one and run the four checks again.</p>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div><code>python</code>, <code>npm</code>, <code>uv</code> and <code>uip</code> all print a version number.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-51">
+      <div class="num">51</div>
+      <div class="body">
+        <h3>Create the project folder and virtual environment</h3>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-4')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="gen-code-4"><code>mkdir "$HOME\Settlement_Coded_Agent"
+cd "$HOME\Settlement_Coded_Agent"
+uv venv --python 3.13
+.\.venv\Scripts\Activate.ps1</code></pre>
+        </div>
+        </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-5')"></button>
+<div class="highlight">
+          <div class="filename">Command Prompt</div>
+          <pre id="gen-code-5"><code>set "AGENT_ROOT=%USERPROFILE%\Settlement_Coded_Agent"
+if not exist "%AGENT_ROOT%" mkdir "%AGENT_ROOT%"
+cd /d "%AGENT_ROOT%"
+uv venv --python 3.13
+call .venv\Scripts\activate.bat</code></pre>
+        </div>
+        </div>
+        <div class="adm tip">
+          <div class="adm-title">💡 Expected result</div>
+          <div class="adm-body">A <code>.venv</code> folder is created and the prompt begins with <code>(Settlement_Coded_Agent)</code>.</div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">📝 Notes</div>
+          <div class="adm-body">If uv asks <i>A virtual environment already exists at .venv. Do you want to replace it?</i>, answer <code>y</code> at that prompt only. If PowerShell blocks activation, run <code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code> in the same window and activate again.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Created <code>Settlement_Coded_Agent</code> and activated <code>.venv</code>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-52">
+      <div class="num">52</div>
+      <div class="body">
+        <h3>Install the dependencies and register the environment</h3>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-6')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="gen-code-6"><code>uv pip install "uipath-langchain[bedrock,vertex]&gt;=0.20.0,&lt;0.21.0"
+uv pip install uipath-dev
+uip codedagent setup --force</code></pre>
+        </div>
+        </div>
+        <p>Expected result: both installs complete without an error, and setup shows <b>Result: Success</b>, <b>Code: CodedAgentsSetup</b> and a <b>PythonPath</b> that points to the <code>.venv</code> folder.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Command Prompt</span>
+            </div>
+            <img src="assets/coded_cli_setup.png" alt="uip codedagent setup --force succeeded." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>uip codedagent setup --force succeeded.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Dependencies installed.</div></div>
+          <div class="row"><span class="box"></span><div><code>uip codedagent setup --force</code> returned <b>Success</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-53">
+      <div class="num">53</div>
+      <div class="body">
+        <h3>Sign in to UiPath</h3>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-7')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="gen-code-7"><code>uip login --organization tpenlabs --tenant AgenticPractice</code></pre>
+        </div>
+        </div>
+        <p>A browser opens for authentication. After sign-in the result shows <b>Authenticated</b>, organization <code>tpenlabs</code> and tenant <code>AgenticPractice</code>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Command Prompt</span>
+            </div>
+            <img src="assets/coded_cli_login.png" alt="uip login succeeded for tpenlabs / AgenticPractice." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>uip login succeeded for tpenlabs / AgenticPractice.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Signed in to the correct organization and tenant.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-54">
+      <div class="num">54</div>
+      <div class="body">
+        <h3>Save your project ID to .env</h3>
+        <p>Use the project ID you copied in Studio Web. <code>.env</code> must contain only <code>UIPATH_PROJECT_ID=</code> followed by the plain ID — no quotes, no spaces and no <code>%</code> signs.</p>
+        <p><b>PowerShell</b> — run the first line, paste your ID at the prompt and press Enter, then run the other two lines:</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-8')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="gen-code-8"><code>$projectId = Read-Host "Paste your unique Studio Web project ID"
+Set-Content -Path .env -Value "UIPATH_PROJECT_ID=$projectId"
+Add-Content -Path .gitignore -Value ".env"</code></pre>
+        </div>
+        </div>
+        <p><b>Command Prompt</b> — replace <code>YOUR_PROJECT_ID</code> with your own ID (no space before <code>&gt;</code>):</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-9')"></button>
+<div class="highlight">
+          <div class="filename">Command Prompt</div>
+          <pre id="gen-code-9"><code>echo UIPATH_PROJECT_ID=YOUR_PROJECT_ID&gt; .env
+echo .env&gt;&gt; .gitignore</code></pre>
+        </div>
+        </div>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Command Prompt</span>
+            </div>
+            <img src="assets/coded_cli_env.png" alt="Writing your own UIPATH_PROJECT_ID to .env." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Writing your own UIPATH_PROJECT_ID to .env.</figcaption>
+        </figure>
+        <p>Check the file before you continue (<code>Get-Content .env</code> in PowerShell, <code>type .env</code> in Command Prompt). Expected: <code>UIPATH_PROJECT_ID=1a2b3c4d-1111-2222-3333-444455556666</code> with your own ID.</p>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ No % signs</div>
+          <div class="adm-body">In Command Prompt do not wrap the ID in % signs (for example <code>%1a2b3c4d-...%</code>). It is written to .env literally and <code>push</code> later fails with HTTP 400.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div><code>.env</code> contains my own plain project ID.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-55">
+      <div class="num">55</div>
+      <div class="body">
+        <h3>Create the local scaffold</h3>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-10')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="gen-code-10"><code>uipath new Settlement_Coded_Agent --type agent --agent-framework uipath-langchain --dir .</code></pre>
+        </div>
+        </div>
+        <p>Expected result: the command creates <code>main.py</code>, <code>langgraph.json</code> and <code>pyproject.toml</code>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Command Prompt</span>
+            </div>
+            <img src="assets/coded_cli_new.png" alt="Local project scaffold created." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Local project scaffold created.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Notes</div>
+          <div class="adm-body">Keep the final dot after <code>--dir</code>; without it the command fails with <i>Option '--dir' requires an argument</i>. Ignore the suggested <code>uipath run agent</code> hint — you replace <code>main.py</code> next.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Scaffold created in the project folder.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-56">
+      <div class="num">56</div>
+      <div class="body">
+        <h3>Select the model</h3>
+        <p>The instructor chooses one model for the class so results are comparable. List the models available to your tenant:</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-11')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="gen-code-11"><code>uip codedagent list-models</code></pre>
+        </div>
+        </div>
+        <p>The model used in this guide is:</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-12')"></button>
+<div class="highlight">
+          <div class="filename">Model</div>
+          <pre id="gen-code-12"><code>anthropic.claude-haiku-4-5-20251001-v1:0</code></pre>
+        </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">📝 Model not available?</div>
+          <div class="adm-body">The instructor selects one approved replacement and updates the <code>model=</code> line in <code>main.py</code>. Do not choose different models independently.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Confirmed the class model is available.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-57">
+      <div class="num">57</div>
+      <div class="body">
+        <h3>Replace main.py with the settlement agent</h3>
+        <p>Open the file (<code>notepad .\main.py</code> in PowerShell, <code>notepad main.py</code> in Command Prompt). Press <b>Ctrl+A</b>, delete the sample report-generator code, paste the complete code below, then save and close Notepad.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-13')"></button>
+<div class="highlight">
+          <div class="filename">main.py</div>
+          <pre id="gen-code-13"><code>import json
+import re
+
+from langchain_core.messages import HumanMessage, SystemMessage
+from langgraph.graph import END, START, StateGraph
+from pydantic import BaseModel
+
+from uipath_langchain.chat import UiPathChatAnthropicBedrock
+
+
+class GraphState(BaseModel):
+    insurance_type: str
+    coverage: str
+    claim_amount: float
+    policy_status: str
+    fraud_verdict: str
+
+
+class GraphOutput(BaseModel):
+    eligible: bool
+    settlement_percentage: float
+    settlement_amount: float
+    message: str
+
+
+async def settle_claim(state: GraphState) -&gt; GraphOutput:
+    llm = UiPathChatAnthropicBedrock(
+        model="anthropic.claude-haiku-4-5-20251001-v1:0"
+    )
+
+    prompt = f"""
+Interpret the insurance values below and return JSON only.
+
+insurance_type: {state.insurance_type}
+coverage: {state.coverage}
+
+Return exactly:
+{{"insurance_type": "Vehicle", "coverage": "Full"}}
+
+Allowed insurance types: Medical, Stolen, Theft, Water Damage, Vehicle, Fire.
+Allowed coverage values: Full, Partial.
+"""
+
+    try:
+        response = await llm.ainvoke([
+            SystemMessage(
+                content="Normalize the insurance values and return JSON only."
+            ),
+            HumanMessage(content=prompt),
+        ])
+
+        match = re.search(
+            r"\{.*\}",
+            str(response.content),
+            re.DOTALL
+        )
+
+        if not match:
+            raise ValueError("The model did not return JSON.")
+
+        interpreted = json.loads(match.group(0))
+
+        insurance_type = str(
+            interpreted.get("insurance_type", state.insurance_type)
+        ).strip().lower()
+
+        coverage = str(
+            interpreted.get("coverage", state.coverage)
+        ).strip().lower()
+
+    except (ValueError, TypeError, AttributeError, json.JSONDecodeError):
+        return GraphOutput(
+            eligible=False,
+            settlement_percentage=0.0,
+            settlement_amount=0.0,
+            message="The claim requires manual review because the values could not be interpreted."
+        )
+
+    allowed_types = {
+        "medical",
+        "stolen",
+        "theft",
+        "water damage",
+        "vehicle",
+        "fire"
+    }
+
+    if state.policy_status.strip().lower() != "active":
+        return GraphOutput(
+            eligible=False,
+            settlement_percentage=0.0,
+            settlement_amount=0.0,
+            message="The policy is not active."
+        )
+
+    if state.fraud_verdict.strip().upper() in {"SUSPEND", "REJECT"}:
+        return GraphOutput(
+            eligible=False,
+            settlement_percentage=0.0,
+            settlement_amount=0.0,
+            message="The claim requires additional fraud review."
+        )
+
+    if insurance_type not in allowed_types:
+        return GraphOutput(
+            eligible=False,
+            settlement_percentage=0.0,
+            settlement_amount=0.0,
+            message="The incident type is not eligible for settlement."
+        )
+
+    if coverage not in {"full", "partial"}:
+        return GraphOutput(
+            eligible=False,
+            settlement_percentage=0.0,
+            settlement_amount=0.0,
+            message="The coverage type is not supported."
+        )
+
+    if state.claim_amount &lt;= 0:
+        return GraphOutput(
+            eligible=False,
+            settlement_percentage=0.0,
+            settlement_amount=0.0,
+            message="The claim amount must be greater than zero."
+        )
+
+    percentage = 95.0 if coverage == "full" else 90.0
+    amount = round(state.claim_amount * percentage / 100, 2)
+
+    return GraphOutput(
+        eligible=True,
+        settlement_percentage=percentage,
+        settlement_amount=amount,
+        message=f"The claim is eligible for settlement of {amount:.2f}."
+    )
+
+
+builder = StateGraph(GraphState, output=GraphOutput)
+builder.add_node("settle_claim", settle_claim)
+builder.add_edge(START, "settle_claim")
+builder.add_edge("settle_claim", END)
+
+graph = builder.compile()</code></pre>
+        </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">📝 Why named fields?</div>
+          <div class="adm-body"><code>GraphOutput</code> is a Pydantic model, so every return uses named fields (<code>eligible=...</code>, <code>settlement_percentage=...</code>). Positional values fail with <i>BaseModel.__init__() takes 1 positional argument but 5 were given</i>.</div>
+        </div>
+        <div class="adm tip">
+          <div class="adm-title">💡 What the code does</div>
+          <div class="adm-body">The LLM only normalizes the free-text <code>insurance_type</code> and <code>coverage</code>. Python then rejects inactive policies, SUSPEND / REJECT fraud verdicts, unsupported types or coverage and non-positive amounts, and pays <b>95%</b> for Full or <b>90%</b> for Partial coverage, rounded to 2 decimals. Do not reuse the older <code>main.py</code> from previous guides.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div><code>main.py</code> contains <code>settle_claim</code>, not the report-generator sample.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-58">
+      <div class="num">58</div>
+      <div class="body">
+        <h3>Initialize the project and verify the schema</h3>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-14')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell / Command Prompt</div>
+          <pre id="gen-code-14"><code>uip codedagent init</code></pre>
+        </div>
+        </div>
+        <p>Expected result: <code>entry-points.json</code> is created and the graph shows <code>__start__ → settle_claim → __end__</code>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Command Prompt</span>
+            </div>
+            <img src="assets/coded_cli_init.png" alt="Successful initialization showing the settle_claim graph." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Successful initialization showing the settle_claim graph.</figcaption>
+        </figure>
+        <p>The <i>FutureWarning</i> about <code>uipath.platform.common.constants</code> is only a deprecation warning. If a Bedrock dependency error appears, rerun the <code>uipath-langchain[bedrock,vertex]</code> install. Inspect the generated file with <code>Get-Content entry-points.json</code> or <code>type entry-points.json</code>; if it still shows <code>generate_report</code> or topic/report fields, <code>main.py</code> was not replaced — repeat the previous step and run <code>init</code> again.</p>
+        <p>The project folder should now contain:</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'gen-code-15')"></button>
+<div class="highlight">
+          <div class="filename">Project files</div>
+          <pre id="gen-code-15"><code>main.py
+langgraph.json
+pyproject.toml
+uipath.json
+entry-points.json
+bindings.json
+.env</code></pre>
+        </div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div><code>uip codedagent init</code> shows the <code>settle_claim</code> graph.</div></div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <nav class="md-footer-nav">
+      <a class="prev" href="coded-agent-create.html"><span class="dir">← Previous</span><span class="ttl">Create the Settlement Coded Agent</span></a>
+      <a class="next" href="coded-agent-test-push.html"><span class="dir">Next →</span><span class="ttl">Test and Push the Coded Agent</span></a>
+    </nav>
+    <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
+  </main>
+</div>
+
+<script src="../assets/course.js?v=20261125"></script>
+</body>
+</html>

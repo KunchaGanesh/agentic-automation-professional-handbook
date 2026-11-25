@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deploy and Get Agent ID · Insurance Claim Solution</title>
+<link rel="stylesheet" href="../assets/course.css?v=20261125">
+</head>
+<body>
+
+<header class="md-header">
+  <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
+  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+</header>
+
+<div class="md-main">
+  <nav class="md-sidebar md-sidebar--primary">
+<div class="nav">
+  <div class="rise-course-block">
+    <p class="rise-course-title">Insurance Claim Solution</p>
+    <div class="rise-progress"><div class="rise-progress-bar"><div class="rise-progress-fill" style="width:0%"></div></div><span class="rise-progress-label">0% COMPLETE</span></div>
+  </div>
+  <a class="rise-home" href="../index.html">Home</a>
+  <a class="rise-home" href="../work-environment.html">Work Environment</a>
+  <details open>
+    <summary>Insurance Claim Solution</summary>
+    <div class="group-items">
+      <div class="nav-section">Claim Intake</div>
+      <a class="lesson-row" href="concepts-conversational.html"><span class="lesson-ico">1</span><span class="lesson-label">Conversational Agent Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="create-claim-agent.html"><span class="lesson-ico">2</span><span class="lesson-label">Create the Insurance Claim Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="system-prompt.html"><span class="lesson-ico">3</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="context-grounding.html"><span class="lesson-ico">4</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="tools.html"><span class="lesson-ico">5</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="test-claim-agent.html"><span class="lesson-ico">6</span><span class="lesson-label">Test the Insurance Claim Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="deploy-agent.html"><span class="lesson-ico">7</span><span class="lesson-label">Deploy and Get Agent ID</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="import-claim-app.html"><span class="lesson-ico">8</span><span class="lesson-label">Import the Claim App</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="observe-agent.html"><span class="lesson-ico">9</span><span class="lesson-label">Observe Your Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <div class="nav-section">Claim Approval Process</div>
+      <a class="lesson-row" href="concepts-maestro.html"><span class="lesson-ico">10</span><span class="lesson-label">Maestro BPMN Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="import-bpmn.html"><span class="lesson-ico">11</span><span class="lesson-label">Import the BPMN File</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="start-event.html"><span class="lesson-ico">12</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="fraud-agent-build.html"><span class="lesson-ico">13</span><span class="lesson-label">Build the Fraud Detect Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="fraud-agent-evaluate.html"><span class="lesson-ico">14</span><span class="lesson-label">Test and Evaluate the Fraud Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="fraud-agent-task.html"><span class="lesson-ico">15</span><span class="lesson-label">Fraud Detection Agent Task</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="download-claim-file.html"><span class="lesson-ico">16</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="supervisor-validation.html"><span class="lesson-ico">17</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="notify-claimant.html"><span class="lesson-ico">18</span><span class="lesson-label">Notify the Claimant</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="reviewer-gateway.html"><span class="lesson-ico">19</span><span class="lesson-label">Reviewer Gateway</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <div class="nav-section">Settlement Coded Agent</div>
+      <a class="lesson-row" href="coded-agent-create.html"><span class="lesson-ico">20</span><span class="lesson-label">Create the Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="coded-agent-build.html"><span class="lesson-ico">21</span><span class="lesson-label">Build the Coded Agent Locally</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="coded-agent-test-push.html"><span class="lesson-ico">22</span><span class="lesson-label">Test and Push the Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="coded-agent-task.html"><span class="lesson-ico">23</span><span class="lesson-label">Settlement Coded Agent Task</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <div class="nav-section">Decision and Deployment</div>
+      <a class="lesson-row" href="generate-email.html"><span class="lesson-ico">24</span><span class="lesson-label">Generate the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="send-email.html"><span class="lesson-ico">25</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="debug-deploy.html"><span class="lesson-ico">26</span><span class="lesson-label">Debug and Deploy the Solution</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="complete.html"><span class="lesson-ico">27</span><span class="lesson-label">Course Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+</div>
+  </nav>
+
+  <main class="md-content">
+    <span class="eyebrow">Claim Intake · Lesson 7 of 26</span>
+    <h1>Deploy and Get Agent ID</h1>
+    <div class="rise-divider"></div>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">With the conversational agent built, grounded, and tooled up, it's ready to move out of Studio Web and into a real, running deployment. Deploying and publishing packages your agent as a versioned release and makes it available to run — either standalone or, as you'll see next, embedded directly in an app.</p>
+
+    <p>UiPath conversational agents don't live in just one place. Once deployed, the same agent can be reached through several different channels, each inheriting a different subset of capabilities depending on what that platform supports:</p>
+
+    <table>
+      <thead>
+        <tr><th>Feature</th><th>Instance Management</th><th>A4E Assistant</th><th>MS Teams</th><th>Slack</th><th>iFrame/Apps</th><th>TypeScript SDK</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Starting prompts</td><td><span class="yes">✓</span></td><td>—</td><td>Coming</td><td>Coming</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Chat history</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td>—</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>New chat</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>HTML preview</td><td><span class="yes">✓</span></td><td>—</td><td>—</td><td>—</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>File uploads</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td>Coming</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Feedback</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td>Coming</td><td>Coming</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Anonymous access</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="yes">✓</span></td><td>Coming</td></tr>
+        <tr><td>User settings</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td>—</td><td>—</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13.5px;color:var(--muted);"><b>Instance Management provides the latest and most complete UI.</b> Other channels inherit feature subsets based on platform constraints and integration capabilities. This ensures optimal experiences on each platform while maintaining consistent core functionality. The <b>iFrame/Apps</b> channel is the one you wire up in the next lessons when you embed the conversational agent in the Claim Request App.</p>
+
+        <div class="step" id="step-15">
+      <div class="num">15</div>
+      <div class="body">
+        <h3>Deploy the agent</h3>
+        <p>In the toolbar open the arrow next to <b>Deploy</b> and choose <b>Deploy</b> ("Publish package &amp; create deployment"). <b>Publish</b> alone only pushes the package to a feed; <b>Deploy</b> also creates a running deployment.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Deploy</span>
+            </div>
+            <img src="assets/conversational_agent_2_get_chat_agent_id_step1_deploy.png" alt="Deploy menu in the Studio Web toolbar." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Deploy menu in the Studio Web toolbar.</figcaption>
+        </figure>
+        <p>In the deploy panel (1) keep <b>Pack to → Personal</b> (the safe default for this workshop), add release notes and confirm the version, then (2) click <b>Deploy</b>. Wait for <b>Deployment successful</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Deploy panel</span>
+            </div>
+            <img src="assets/cn_step10_deploy.png" alt="1 · Pack to Personal. 2 · Click Deploy." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>1 · Pack to Personal. 2 · Click Deploy.</figcaption>
+        </figure>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Deployment</span>
+            </div>
+            <img src="assets/conversational_agent_2_get_chat_agent_id_step2_deployemnt_successfull.png" alt="Deployment successful." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Deployment successful.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Opened the <b>Deploy</b> menu and deployed the agent.</div></div>
+          <div class="row"><span class="box"></span><div>Saw the <b>Deployment successful</b> message.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-16">
+      <div class="num">16</div>
+      <div class="body">
+        <h3>Get the Agent ID</h3>
+        <p>The app you build next embeds your agent by its <b>Agent ID</b>. Click the app launcher (grid icon) and choose <b>Agents</b> under <b>More</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com</span>
+            </div>
+            <img src="assets/conversational_agent_2_get_chat_agent_id_step3_select_agents.png" alt="App launcher → Agents." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>App launcher → Agents.</figcaption>
+        </figure>
+        <p>In the Agent Registry click <b>Conversational</b>, then <b>Open</b> your deployed agent.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Agents · Conversational</span>
+            </div>
+            <img src="assets/conversational_agent_2_get_chat_agent_id_step4_goto_deployedagent.png" alt="Agent Registry → Conversational → your agent." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Agent Registry → Conversational → your agent.</figcaption>
+        </figure>
+        <p>On the agent page click the <b>Chat</b> button (top right).</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Agents · your agent</span>
+            </div>
+            <img src="assets/conversational_agent_2_get_chat_agent_id_step5_click_chat.png" alt="Click Chat on the agent page." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Click Chat on the agent page.</figcaption>
+        </figure>
+        <p>Look at the browser address bar. The number after <code>/chat/</code> is your <b>Agent ID</b>. Copy it.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/…/agents_/deployed/chat/&amp;lt;AgentID&amp;gt;</span>
+            </div>
+            <img src="assets/conversational_agent_2_get_chat_agent_id_step6_agent_id.png" alt="The Agent ID in the chat URL (e.g. …/deployed/chat/&lt;b&gt;480131&lt;/b&gt;?from=conversational)." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Agent ID in the chat URL (e.g. …/deployed/chat/<b>480131</b>?from=conversational).</figcaption>
+        </figure>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Use your own Agent ID</div>
+          <div class="adm-body">Every deployed agent has a different ID. The numbers in the screenshots are examples only.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Opened Agents → Conversational and opened my deployed agent.</div></div>
+          <div class="row"><span class="box"></span><div>Clicked <b>Chat</b> and copied the Agent ID from the URL.</div></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <nav class="md-footer-nav">
+      <a class="prev" href="test-claim-agent.html"><span class="dir">← Previous</span><span class="ttl">Test the Insurance Claim Agent</span></a>
+      <a class="next" href="import-claim-app.html"><span class="dir">Next →</span><span class="ttl">Import the Claim App</span></a>
+    </nav>
+    <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
+  </main>
+</div>
+
+<script src="../assets/course.js?v=20261125"></script>
+</body>
+</html>

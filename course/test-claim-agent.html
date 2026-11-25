@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test the Insurance Claim Agent · Insurance Claim Solution</title>
+<link rel="stylesheet" href="../assets/course.css?v=20261125">
+</head>
+<body>
+
+<header class="md-header">
+  <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
+  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+</header>
+
+<div class="md-main">
+  <nav class="md-sidebar md-sidebar--primary">
+<div class="nav">
+  <div class="rise-course-block">
+    <p class="rise-course-title">Insurance Claim Solution</p>
+    <div class="rise-progress"><div class="rise-progress-bar"><div class="rise-progress-fill" style="width:0%"></div></div><span class="rise-progress-label">0% COMPLETE</span></div>
+  </div>
+  <a class="rise-home" href="../index.html">Home</a>
+  <a class="rise-home" href="../work-environment.html">Work Environment</a>
+  <details open>
+    <summary>Insurance Claim Solution</summary>
+    <div class="group-items">
+      <div class="nav-section">Claim Intake</div>
+      <a class="lesson-row" href="concepts-conversational.html"><span class="lesson-ico">1</span><span class="lesson-label">Conversational Agent Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="create-claim-agent.html"><span class="lesson-ico">2</span><span class="lesson-label">Create the Insurance Claim Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="system-prompt.html"><span class="lesson-ico">3</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="context-grounding.html"><span class="lesson-ico">4</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="tools.html"><span class="lesson-ico">5</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="test-claim-agent.html"><span class="lesson-ico">6</span><span class="lesson-label">Test the Insurance Claim Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="deploy-agent.html"><span class="lesson-ico">7</span><span class="lesson-label">Deploy and Get Agent ID</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="import-claim-app.html"><span class="lesson-ico">8</span><span class="lesson-label">Import the Claim App</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="observe-agent.html"><span class="lesson-ico">9</span><span class="lesson-label">Observe Your Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <div class="nav-section">Claim Approval Process</div>
+      <a class="lesson-row" href="concepts-maestro.html"><span class="lesson-ico">10</span><span class="lesson-label">Maestro BPMN Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="import-bpmn.html"><span class="lesson-ico">11</span><span class="lesson-label">Import the BPMN File</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="start-event.html"><span class="lesson-ico">12</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="fraud-agent-build.html"><span class="lesson-ico">13</span><span class="lesson-label">Build the Fraud Detect Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="fraud-agent-evaluate.html"><span class="lesson-ico">14</span><span class="lesson-label">Test and Evaluate the Fraud Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="fraud-agent-task.html"><span class="lesson-ico">15</span><span class="lesson-label">Fraud Detection Agent Task</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="download-claim-file.html"><span class="lesson-ico">16</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="supervisor-validation.html"><span class="lesson-ico">17</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="notify-claimant.html"><span class="lesson-ico">18</span><span class="lesson-label">Notify the Claimant</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="reviewer-gateway.html"><span class="lesson-ico">19</span><span class="lesson-label">Reviewer Gateway</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <div class="nav-section">Settlement Coded Agent</div>
+      <a class="lesson-row" href="coded-agent-create.html"><span class="lesson-ico">20</span><span class="lesson-label">Create the Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="coded-agent-build.html"><span class="lesson-ico">21</span><span class="lesson-label">Build the Coded Agent Locally</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="coded-agent-test-push.html"><span class="lesson-ico">22</span><span class="lesson-label">Test and Push the Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="coded-agent-task.html"><span class="lesson-ico">23</span><span class="lesson-label">Settlement Coded Agent Task</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <div class="nav-section">Decision and Deployment</div>
+      <a class="lesson-row" href="generate-email.html"><span class="lesson-ico">24</span><span class="lesson-label">Generate the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="send-email.html"><span class="lesson-ico">25</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="debug-deploy.html"><span class="lesson-ico">26</span><span class="lesson-label">Debug and Deploy the Solution</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="complete.html"><span class="lesson-ico">27</span><span class="lesson-label">Course Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+</div>
+  </nav>
+
+  <main class="md-content">
+    <span class="eyebrow">Claim Intake · Lesson 6 of 26</span>
+    <h1>Test the Insurance Claim Agent</h1>
+    <div class="rise-divider"></div>
+        <p>Before deploying, run the agent in the debugger and walk through a full claim.</p>
+    <div class="step" id="step-13">
+      <div class="num">13</div>
+      <div class="body">
+        <h3>Debug and chat with the agent</h3>
+        <p>Click <b>Debug</b> in the top toolbar.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Debug</span>
+            </div>
+            <img src="assets/conversational_agent_step15_debug.png" alt="Click Debug to start a test session." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Click Debug to start a test session.</figcaption>
+        </figure>
+        <p>The <b>Chat</b> panel opens with the welcome title and the four starting prompts you created. Click <b>Start a new claim</b> (or type it) and press <b>Send</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Debug chat</span>
+            </div>
+            <img src="assets/cn_step9_chat.png" alt="Preview chat showing the welcome message and starting prompts." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Preview chat showing the welcome message and starting prompts.</figcaption>
+        </figure>
+        <p>The chat panel also lists the tools and debug logs. Type in <b>Talk with your agent…</b> or click the suggestion <b>Hi, what can you do?</b>. The warning "provisioning step was skipped" in the logs is expected.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Debug chat</span>
+            </div>
+            <img src="assets/conversational_agent_step16_start_chatting.png" alt="Chat panel with the debug logs and tools listed." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Chat panel with the debug logs and tools listed.</figcaption>
+        </figure>
+        <p>Answer the agent's questions one at a time. Use this sample claimant:</p>
+        <table>
+          <thead><tr><th>Question</th><th>Sample answer</th></tr></thead>
+          <tbody>
+            <tr><td>Name</td><td>Priya Singh</td></tr>
+            <tr><td>Policy number</td><td>POL-2024-23489</td></tr>
+            <tr><td>Incident type</td><td>Vehicle Damage</td></tr>
+            <tr><td>Claim amount</td><td>166500</td></tr>
+            <tr><td>Incident description</td><td>Bumper and headlight repair after collision</td></tr>
+            <tr><td>Supporting document</td><td><a href="assets/POL-2024-23489_Fraudulent_Active.pdf" download>POL-2024-23489_Fraudulent_Active.pdf</a><a href="assets/POL-2024-23489_Fraudulent_Active.pdf" download title="Download POL-2024-23489_Fraudulent_Active.pdf" aria-label="Download POL-2024-23489_Fraudulent_Active.pdf" style="display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;margin-left:6px;width:26px;height:26px;border:1px solid var(--code-border);border-radius:6px;background:#fff;color:var(--up-orange-dark);text-decoration:none;"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg></a></td></tr>
+          </tbody>
+        </table>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Debug chat</span>
+            </div>
+            <img src="assets/conversational_agent_step17_chat_by_adding_details.png" alt="Policy summary and coverage check produced from the contexts." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Policy summary and coverage check produced from the contexts.</figcaption>
+        </figure>
+        <p>Upload the supporting PDF when asked (or reply <code>Skip</code>), review the claim summary, then type <code>Submit</code>. The agent runs the IXP tool on the file and then the <b>SaveClaimInformation</b> workflow, which returns the official Claim ID with status <b>Pending Review</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Debug chat</span>
+            </div>
+            <img src="assets/conversational_agent_step18_claimsubmitted.png" alt="Claim Submitted Successfully, with copy and thumbs up / down icons under the reply." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Claim Submitted Successfully, with copy and thumbs up / down icons under the reply.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Feedback icons</div>
+          <div class="adm-body">Under each agent reply you can copy the message or give it a <b>thumbs up / thumbs down</b>. Feedback attaches to the execution trace and is reviewed on the agent's <b>Feedback</b> tab after deployment.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Started a debug session and chatted with the agent.</div></div>
+          <div class="row"><span class="box"></span><div>Gave the sample policy number and incident type; the agent returned a policy summary and coverage check.</div></div>
+          <div class="row"><span class="box"></span><div>Uploaded the PDF, typed <code>submit</code>, and received a claim ID with status <b>Pending Review</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-14">
+      <div class="num">14</div>
+      <div class="body">
+        <h3>Test with more sample claims</h3>
+        <p>One claim is not enough to trust an agent. Download the sample claim pack and run the scenarios below in a fresh debug chat each time (click <b>New claim</b> between runs). Every invoice belongs to a real record in the <b>PolicyRecords</b> entity, so the policy lookup and coverage check return real values.</p>
+        <div class="adm note" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+          <div class="adm-body" style="margin:0;"><b>ClaimInvoices_Sample.zip</b> — 49 claim invoices (PDF), 25 marked <i>Fraudulent</i> and 24 <i>NonFraudulent</i>. You can also download single files from the tables below.</div>
+          <a href="assets/ClaimInvoices_Sample.zip" download title="Download ClaimInvoices_Sample.zip" aria-label="Download ClaimInvoices_Sample.zip" style="display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;margin-left:6px;width:26px;height:26px;border:1px solid var(--code-border);border-radius:6px;background:#fff;color:var(--up-orange-dark);text-decoration:none;"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg></a>
+        </div>
+        <div class="adm tip">
+          <div class="adm-title">💡 How to read a file name</div>
+          <div class="adm-body"><code>POL-2024-23513_NonFraudulent_Active.pdf</code> = policy number, the label the <b>Fraud Detect Agent</b> should reach later in the process, and the policy status. The chat answers below match what is printed on each invoice; the description is the invoice's <i>Incident Ref</i>.</div>
+        </div>
+        <h4>Recommended scenarios</h4>
+        <div class="table-wrap">
+        <table>
+          <thead><tr><th>Scenario</th><th>Answer the agent with</th><th>Document</th><th>What to expect</th></tr></thead>
+          <tbody>
+            <tr><td><b>Happy path — fire</b></td><td><span class="kv">Name: <b>Ravi Kumar</b><br>Policy: <code>POL-2024-23513</code><br>Incident: Fire Insurance<br>Amount: 50845<br>Description: <i>Smoke and soot damage cleanup services</i></span></td><td>Upload <a href="assets/claims/POL-2024-23513_NonFraudulent_Active.pdf" download>POL-2024-23513_NonFraudulent_Active.pdf</a></td><td>Policy found (Active, Partial), coverage check passes, no discrepancy. Reply <code>Submit</code> → Claim ID with status <b>Pending Review</b>.</td></tr>
+            <tr><td><b>Happy path — vehicle</b></td><td><span class="kv">Name: <b>Sneha Iyer</b><br>Policy: <code>POL-2024-23514</code><br>Incident: Vehicle Damage<br>Amount: 26334<br>Description: <i>Vehicle parts replacement after accident damage</i></span></td><td>Upload <a href="assets/claims/POL-2024-23514_NonFraudulent_Active.pdf" download>POL-2024-23514_NonFraudulent_Active.pdf</a></td><td>Same as above, with Full coverage.</td></tr>
+            <tr><td><b>Happy path — medical</b></td><td><span class="kv">Name: <b>Arjun Rao</b><br>Policy: <code>POL-2024-23516</code><br>Incident: Medical emergency<br>Amount: 75318<br>Description: <i>Hospital admission and emergency surgery charges</i></span></td><td>Upload <a href="assets/claims/POL-2024-23516_NonFraudulent_Active.pdf" download>POL-2024-23516_NonFraudulent_Active.pdf</a></td><td>Claim submitted. A short description such as <i>hospitalised after a fall</i> is also accepted.</td></tr>
+            <tr><td><b>Happy path — water</b></td><td><span class="kv">Name: <b>Neha Gupta</b><br>Policy: <code>POL-2024-23522</code><br>Incident: Water Damage<br>Amount: 22391<br>Description: <i>Repair of water-damaged flooring and walls</i></span></td><td>Upload <a href="assets/claims/POL-2024-23522_NonFraudulent_Active.pdf" download>POL-2024-23522_NonFraudulent_Active.pdf</a></td><td>Claim submitted.</td></tr>
+            <tr><td><b>Amount discrepancy</b></td><td><span class="kv">Name: <b>Priya Singh</b><br>Policy: <code>POL-2024-23489</code><br>Incident: Vehicle Damage<br>Amount: 16650<br>Description: <i>Bumper and headlight repair after collision</i></span></td><td>Upload <a href="assets/claims/POL-2024-23489_Fraudulent_Active.pdf" download>POL-2024-23489_Fraudulent_Active.pdf</a></td><td>The invoice total is 166,500. The agent shows the difference and asks you to confirm the correct amount.</td></tr>
+            <tr><td><b>Document for another policy</b></td><td><span class="kv">Name: <b>Ravi Kumar</b><br>Policy: <code>POL-2024-23513</code><br>Incident: Fire Insurance<br>Amount: 50845<br>Description: <i>Smoke and soot damage cleanup services</i></span></td><td>Upload <a href="assets/claims/POL-2024-23514_NonFraudulent_Active.pdf" download>POL-2024-23514_NonFraudulent_Active.pdf</a> instead</td><td>Extracted policy number and name differ from your answers. The agent shows the discrepancy and asks which value is correct.</td></tr>
+            <tr><td><b>High-value claim</b></td><td><span class="kv">Name: <b>Arjun Rao</b><br>Policy: <code>POL-2024-23500</code><br>Incident: Fire Insurance<br>Amount: 976183<br>Description: <i>Fire-damaged roof and ceiling reconstruction</i></span></td><td>Upload <a href="assets/claims/POL-2024-23500_Fraudulent_Active.pdf" download>POL-2024-23500_Fraudulent_Active.pdf</a></td><td>Intake accepts it (976,183 against a 786,000 limit). The Fraud Detect Agent flags it later in the Maestro process.</td></tr>
+            <tr><td><b>No document</b></td><td><span class="kv">Name: <b>Rahul Verma</b><br>Policy: <code>POL-2024-23529</code><br>Incident: Water Damage<br>Amount: 53667<br>Description: <i>Pipe burst repair and water damage restoration</i></span></td><td>Reply <code>Skip</code></td><td>The summary shows the document as <b>Not provided</b>; the claim can still be submitted.</td></tr>
+            <tr><td><b>Cancel at review</b></td><td><span class="kv">Name: <b>Anita Sharma</b><br>Policy: <code>POL-2024-23531</code><br>Incident: Fire Insurance<br>Amount: 80927<br>Description: <i>Fire-damaged roof and ceiling reconstruction</i></span></td><td>Upload or <code>Skip</code></td><td>At the summary reply <code>Cancel</code>. The agent confirms the cancellation and does not call the workflow.</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <h4>Negative tests</h4>
+        <div class="table-wrap">
+        <table>
+          <thead><tr><th>Scenario</th><th>Answer the agent with</th><th>Document</th><th>What to expect</th></tr></thead>
+          <tbody>
+            <tr><td><b>Inactive policy</b></td><td><span class="kv">Name: <b>Arjun Rao</b><br>Policy: <code>POL-2024-23457</code><br>Incident: Medical emergency<br>Amount: 25000<br>Description: <i>Hospital stay after an accident</i></span></td><td>Reply <code>Skip</code></td><td>The policy is <b>Expired</b>. The agent asks <i>This policy is not active. Would you like to continue with the claim?</i> Reply <code>No</code> to stop, or <code>Yes</code> to continue with the actual status kept.</td></tr>
+            <tr><td><b>Policy not found</b></td><td>Any name, policy <code>POL-2024-99999</code></td><td>—</td><td>No record in PolicyRecords. The agent asks you to correct the policy number.</td></tr>
+            <tr><td><b>New claim reset</b></td><td>After a submitted claim, click or type <code>New claim</code></td><td>—</td><td>The agent immediately asks <i>What is your full name?</i> and reuses nothing from the previous claim.</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <details>
+          <summary><b>All 49 sample invoices</b> — policy details as stored in PolicyRecords</summary>
+        <div class="table-wrap">
+        <table>
+          <thead><tr><th>File</th><th>Customer</th><th>Incident type</th><th>Total (USD)</th><th>Coverage</th><th>Limit</th><th>Label</th></tr></thead>
+          <tbody>
+            <tr><td><a href="assets/claims/POL-2024-23455_Fraudulent_Active.pdf" download>POL-2024-23455_Fraudulent_Active.pdf</a></td><td>Anita Sharma</td><td>Medical emergency</td><td>173,013</td><td>Partial</td><td>$224,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23461_Fraudulent_Active.pdf" download>POL-2024-23461_Fraudulent_Active.pdf</a></td><td>Rahul Verma</td><td>Fire Insurance</td><td>246,398</td><td>Partial</td><td>$230,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23462_Fraudulent_Active.pdf" download>POL-2024-23462_Fraudulent_Active.pdf</a></td><td>Kiran Patel</td><td>Vehicle Damage</td><td>281,432</td><td>Full</td><td>$856,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23466_Fraudulent_Active.pdf" download>POL-2024-23466_Fraudulent_Active.pdf</a></td><td>Bhavani Goswami</td><td>Water Damage</td><td>504,500</td><td>Limited</td><td>$512,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23470_Fraudulent_Active.pdf" download>POL-2024-23470_Fraudulent_Active.pdf</a></td><td>Arjun Rao</td><td>Medical emergency</td><td>458,599</td><td>Full</td><td>$536,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23479_Fraudulent_Active.pdf" download>POL-2024-23479_Fraudulent_Active.pdf</a></td><td>Anita Sharma</td><td>Fire Insurance</td><td>124,301</td><td>Limited</td><td>$282,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23480_Fraudulent_Active.pdf" download>POL-2024-23480_Fraudulent_Active.pdf</a></td><td>Anita Sharma</td><td>Vehicle Damage</td><td>196,500</td><td>Full</td><td>$198,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23484_Fraudulent_Active.pdf" download>POL-2024-23484_Fraudulent_Active.pdf</a></td><td>Ojas Cherian</td><td>Water Damage</td><td>252,505</td><td>Limited</td><td>$689,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23487_Fraudulent_Active.pdf" download>POL-2024-23487_Fraudulent_Active.pdf</a></td><td>Guneet Atwal</td><td>Medical emergency</td><td>484,798</td><td>Full</td><td>$428,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23488_Fraudulent_Active.pdf" download>POL-2024-23488_Fraudulent_Active.pdf</a></td><td>Arjun Rao</td><td>Fire Insurance</td><td>202,718</td><td>Full</td><td>$625,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23489_Fraudulent_Active.pdf" download>POL-2024-23489_Fraudulent_Active.pdf</a></td><td>Priya Singh</td><td>Vehicle Damage</td><td>166,500</td><td>Full</td><td>$167,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23491_Fraudulent_Active.pdf" download>POL-2024-23491_Fraudulent_Active.pdf</a></td><td>Oni Batra</td><td>Water Damage</td><td>228,762</td><td>Limited</td><td>$605,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23492_Fraudulent_Active.pdf" download>POL-2024-23492_Fraudulent_Active.pdf</a></td><td>Arjun Parekh</td><td>Medical emergency</td><td>737,664</td><td>Partial</td><td>$930,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23494_Fraudulent_Active.pdf" download>POL-2024-23494_Fraudulent_Active.pdf</a></td><td>Nidra Johal</td><td>Fire Insurance</td><td>90,752</td><td>Full</td><td>$233,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23497_Fraudulent_Active.pdf" download>POL-2024-23497_Fraudulent_Active.pdf</a></td><td>Charles Sandal</td><td>Vehicle Damage</td><td>857,500</td><td>Limited</td><td>$872,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23498_Fraudulent_Active.pdf" download>POL-2024-23498_Fraudulent_Active.pdf</a></td><td>Thomas Bhardwaj</td><td>Water Damage</td><td>126,886</td><td>Limited</td><td>$358,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23499_Fraudulent_Active.pdf" download>POL-2024-23499_Fraudulent_Active.pdf</a></td><td>Kiran Patel</td><td>Medical emergency</td><td>357,055</td><td>Partial</td><td>$382,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23500_Fraudulent_Active.pdf" download>POL-2024-23500_Fraudulent_Active.pdf</a></td><td>Arjun Rao</td><td>Fire Insurance</td><td>976,183</td><td>Full</td><td>$786,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23502_Fraudulent_Active.pdf" download>POL-2024-23502_Fraudulent_Active.pdf</a></td><td>Sneha Iyer</td><td>Vehicle Damage</td><td>802,500</td><td>Partial</td><td>$816,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23503_Fraudulent_Active.pdf" download>POL-2024-23503_Fraudulent_Active.pdf</a></td><td>Lipika Borra</td><td>Water Damage</td><td>277,440</td><td>Partial</td><td>$519,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23506_Fraudulent_Active.pdf" download>POL-2024-23506_Fraudulent_Active.pdf</a></td><td>Anita Sharma</td><td>Medical emergency</td><td>306,982</td><td>Full</td><td>$366,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23508_Fraudulent_Active.pdf" download>POL-2024-23508_Fraudulent_Active.pdf</a></td><td>Hitesh Misra</td><td>Fire Insurance</td><td>540,846</td><td>Full</td><td>$385,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23509_Fraudulent_Active.pdf" download>POL-2024-23509_Fraudulent_Active.pdf</a></td><td>Priya Singh</td><td>Vehicle Damage</td><td>117,218</td><td>Limited</td><td>$429,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23510_Fraudulent_Active.pdf" download>POL-2024-23510_Fraudulent_Active.pdf</a></td><td>Arjun Rao</td><td>Water Damage</td><td>496,500</td><td>Limited</td><td>$504,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23512_Fraudulent_Active.pdf" download>POL-2024-23512_Fraudulent_Active.pdf</a></td><td>Zaitra Saini</td><td>Medical emergency</td><td>144,762</td><td>Limited</td><td>$255,000</td><td>Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23513_NonFraudulent_Active.pdf" download>POL-2024-23513_NonFraudulent_Active.pdf</a></td><td>Ravi Kumar</td><td>Fire Insurance</td><td>50,845</td><td>Partial</td><td>$436,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23514_NonFraudulent_Active.pdf" download>POL-2024-23514_NonFraudulent_Active.pdf</a></td><td>Sneha Iyer</td><td>Vehicle Damage</td><td>26,334</td><td>Full</td><td>$407,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23515_NonFraudulent_Active.pdf" download>POL-2024-23515_NonFraudulent_Active.pdf</a></td><td>Suresh Reddy</td><td>Water Damage</td><td>13,806</td><td>Limited</td><td>$113,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23516_NonFraudulent_Active.pdf" download>POL-2024-23516_NonFraudulent_Active.pdf</a></td><td>Arjun Rao</td><td>Medical emergency</td><td>75,318</td><td>Limited</td><td>$523,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23518_NonFraudulent_Active.pdf" download>POL-2024-23518_NonFraudulent_Active.pdf</a></td><td>Bhavna Sabharwal</td><td>Fire Insurance</td><td>13,104</td><td>Partial</td><td>$109,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23520_NonFraudulent_Active.pdf" download>POL-2024-23520_NonFraudulent_Active.pdf</a></td><td>Samarth Oak</td><td>Vehicle Damage</td><td>52,141</td><td>Limited</td><td>$308,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23522_NonFraudulent_Active.pdf" download>POL-2024-23522_NonFraudulent_Active.pdf</a></td><td>Neha Gupta</td><td>Water Damage</td><td>22,391</td><td>Limited</td><td>$128,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23523_NonFraudulent_Active.pdf" download>POL-2024-23523_NonFraudulent_Active.pdf</a></td><td>Mohini Dasgupta</td><td>Medical emergency</td><td>39,293</td><td>Limited</td><td>$360,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23525_NonFraudulent_Active.pdf" download>POL-2024-23525_NonFraudulent_Active.pdf</a></td><td>Suresh Reddy</td><td>Fire Insurance</td><td>93,709</td><td>Partial</td><td>$513,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23526_NonFraudulent_Active.pdf" download>POL-2024-23526_NonFraudulent_Active.pdf</a></td><td>Sneha Iyer</td><td>Vehicle Damage</td><td>39,603</td><td>Limited</td><td>$287,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23529_NonFraudulent_Active.pdf" download>POL-2024-23529_NonFraudulent_Active.pdf</a></td><td>Rahul Verma</td><td>Water Damage</td><td>53,667</td><td>Full</td><td>$435,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23530_NonFraudulent_Active.pdf" download>POL-2024-23530_NonFraudulent_Active.pdf</a></td><td>Hemal Dugal</td><td>Medical emergency</td><td>95,701</td><td>Partial</td><td>$591,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23531_NonFraudulent_Active.pdf" download>POL-2024-23531_NonFraudulent_Active.pdf</a></td><td>Anita Sharma</td><td>Fire Insurance</td><td>80,927</td><td>Limited</td><td>$458,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23532_NonFraudulent_Active.pdf" download>POL-2024-23532_NonFraudulent_Active.pdf</a></td><td>Yuvraj Chaudhary</td><td>Vehicle Damage</td><td>73,490</td><td>Limited</td><td>$552,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23540_NonFraudulent_Active.pdf" download>POL-2024-23540_NonFraudulent_Active.pdf</a></td><td>Kiran Patel</td><td>Water Damage</td><td>75,998</td><td>Full</td><td>$454,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23541_NonFraudulent_Active.pdf" download>POL-2024-23541_NonFraudulent_Active.pdf</a></td><td>Ayaan Raja</td><td>Medical emergency</td><td>83,276</td><td>Full</td><td>$596,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23543_NonFraudulent_Active.pdf" download>POL-2024-23543_NonFraudulent_Active.pdf</a></td><td>Joshua Bir</td><td>Fire Insurance</td><td>71,682</td><td>Partial</td><td>$993,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23544_NonFraudulent_Active.pdf" download>POL-2024-23544_NonFraudulent_Active.pdf</a></td><td>Ravi Kumar</td><td>Vehicle Damage</td><td>52,268</td><td>Limited</td><td>$808,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23545_NonFraudulent_Active.pdf" download>POL-2024-23545_NonFraudulent_Active.pdf</a></td><td>Nisha Varghese</td><td>Water Damage</td><td>43,980</td><td>Partial</td><td>$613,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23546_NonFraudulent_Active.pdf" download>POL-2024-23546_NonFraudulent_Active.pdf</a></td><td>Neha Gupta</td><td>Medical emergency</td><td>29,184</td><td>Full</td><td>$874,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23547_NonFraudulent_Active.pdf" download>POL-2024-23547_NonFraudulent_Active.pdf</a></td><td>Yashvi Nath</td><td>Fire Insurance</td><td>62,545</td><td>Partial</td><td>$442,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23548_NonFraudulent_Active.pdf" download>POL-2024-23548_NonFraudulent_Active.pdf</a></td><td>Kiran Patel</td><td>Vehicle Damage</td><td>37,952</td><td>Partial</td><td>$317,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23552_NonFraudulent_Active.pdf" download>POL-2024-23552_NonFraudulent_Active.pdf</a></td><td>Pooja Mehta</td><td>Water Damage</td><td>37,630</td><td>Partial</td><td>$423,000</td><td>Non-Fraudulent</td></tr>
+            <tr><td><a href="assets/claims/POL-2024-23553_NonFraudulent_Active.pdf" download>POL-2024-23553_NonFraudulent_Active.pdf</a></td><td>Anita Sharma</td><td>Medical emergency</td><td>79,600</td><td>Partial</td><td>$437,000</td><td>Non-Fraudulent</td></tr>
+          </tbody>
+        </table>
+        </div>
+        </details>
+        <div class="adm note">
+          <div class="adm-title">📝 Keep the good runs</div>
+          <div class="adm-body">Each submitted claim is written to Data Fabric and later becomes input for the Maestro process. Submit at least one <i>NonFraudulent</i> and one <i>Fraudulent</i> claim so you can test both the approve and the reject path end to end.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Downloaded <code>ClaimInvoices_Sample.zip</code>.</div></div>
+          <div class="row"><span class="box"></span><div>Ran at least three happy-path claims and received a Claim ID for each.</div></div>
+          <div class="row"><span class="box"></span><div>Saw the agent flag an amount or document discrepancy.</div></div>
+          <div class="row"><span class="box"></span><div>Tested an inactive policy and a policy number that does not exist.</div></div>
+          <div class="row"><span class="box"></span><div>Tested <code>Skip</code> for the document and <code>Cancel</code> at review.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="md-footer-nav">
+      <a class="prev" href="tools.html"><span class="dir">← Previous</span><span class="ttl">Tools</span></a>
+      <a class="next" href="deploy-agent.html"><span class="dir">Next →</span><span class="ttl">Deploy and Get Agent ID</span></a>
+    </nav>
+    <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
+  </main>
+</div>
+
+<script src="../assets/course.js?v=20261125"></script>
+</body>
+</html>

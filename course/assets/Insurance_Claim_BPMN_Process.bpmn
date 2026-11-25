@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:uipath="http://uipath.org/schema/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" exporter="UiPath Studio Web (https://uipath.com)" exporterVersion="2fe43f3e">
+  <bpmn:process id="Process_1" name="Insurance Claim_BPMN_Process">
+    <bpmn:extensionElements>
+      <uipath:variables version="v1">
+        <uipath:input id="vAction" name="action" type="string" elementId="Process_1" default="Approve" />
+      </uipath:variables>
+      <uipath:bindings version="v1">
+        <uipath:binding id="bAfzJAUaI" name="uipath-uipath-dataservice connection" type="string" default="0ed86530-09c8-4ff4-b465-d179bc4057c2" resource="Connection" resourceKey="0ed86530-09c8-4ff4-b465-d179bc4057c2" propertyAttribute="ConnectionId" />
+        <uipath:binding id="bJRLyG2W9" name="FolderKey" type="string" default="d74a3ee7-7fa8-47c1-b2f8-4f08cd1d7b84" resource="Connection" resourceKey="0ed86530-09c8-4ff4-b465-d179bc4057c2" propertyAttribute="folderKey" />
+        <uipath:binding id="b0eas9pqD" name="folderPath" type="string" resource="app" resourceKey="Supervisior_ClaimValidation-App_Latest" propertyAttribute="folderPath" />
+        <uipath:binding id="bLLXHDtA8" name="name" type="string" default="Supervisior_ClaimValidation-App_Latest" resource="app" resourceKey="Supervisior_ClaimValidation-App_Latest" propertyAttribute="name" />
+        <uipath:binding id="bq4eoGILR" name="uipath-google-gmail connection" type="string" default="5a327b3c-a8d2-4f95-b5a7-1ab7cd5dd786" resource="Connection" resourceKey="5a327b3c-a8d2-4f95-b5a7-1ab7cd5dd786" propertyAttribute="ConnectionId" />
+        <uipath:binding id="b9nx0hcTn" name="FolderKey" type="string" default="2ae81e4d-fd14-4741-9476-fe1085b0aa72" resource="Connection" resourceKey="5a327b3c-a8d2-4f95-b5a7-1ab7cd5dd786" propertyAttribute="folderKey" />
+        <uipath:binding id="bIlRhLCb0" name="uipath-uipath-airdk connection" type="string" default="5c65b27f-fed5-4aae-8bd4-9193a76cbd4b" resource="Connection" resourceKey="5c65b27f-fed5-4aae-8bd4-9193a76cbd4b" propertyAttribute="ConnectionId" />
+        <uipath:binding id="b0MzU7GRc" name="FolderKey" type="string" default="efdf8a9f-31c3-4942-a35d-a183d37fcbd0" resource="Connection" resourceKey="5c65b27f-fed5-4aae-8bd4-9193a76cbd4b" propertyAttribute="folderKey" />
+      </uipath:bindings>
+      <uipath:migrationVersion version="21" />
+      <uipath:intsvcActivityConfig version="v2" />
+    </bpmn:extensionElements>
+    <bpmn:task id="Activity_LUTApu" name="Fraud Detection Agent">
+      <bpmn:incoming>edge_j2lFMX</bpmn:incoming>
+      <bpmn:outgoing>edge_LUTApu_XqiQ8R</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_KXuPfP" name="Reviewer Action GateWay" default="edge_5KSVUg">
+      <bpmn:incoming>edge_WogvLk_Gateway</bpmn:incoming>
+      <bpmn:outgoing>edge_Y9T9sF</bpmn:outgoing>
+      <bpmn:outgoing>edge_5KSVUg</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Activity_WogvLk" name="Send Notify Email to Claimant">
+      <bpmn:incoming>edge_XqiQ8R_ZcUcDt</bpmn:incoming>
+      <bpmn:outgoing>edge_ZcUcDt_WogvLk</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_2dYmFI" name="Generate Decision Email">
+      <bpmn:incoming>edge_E1M8B4</bpmn:incoming>
+      <bpmn:incoming>edge_5KSVUg</bpmn:incoming>
+      <bpmn:outgoing>edge_2dYmFI_mNRQwP</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_mNRQwP" name="Send Decision Email">
+      <bpmn:incoming>edge_2dYmFI_mNRQwP</bpmn:incoming>
+      <bpmn:outgoing>edge_jGlnbz</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Event_3qzhYq" name="End">
+      <bpmn:incoming>edge_jGlnbz</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="Activity_ncoQVu" name="SettlementCodedAgent">
+      <bpmn:incoming>edge_Y9T9sF</bpmn:incoming>
+      <bpmn:outgoing>edge_E1M8B4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:startEvent id="Event_mhV0AR" name="Claim Ready for Review">
+      <bpmn:extensionElements>
+        <uipath:entryPointId value="10b130eb-70c7-4487-afbb-c8e9dff83822" />
+      </bpmn:extensionElements>
+      <bpmn:outgoing>edge_j2lFMX</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_XqiQ8R" name="Download File from Record Field">
+      <bpmn:incoming>edge_LUTApu_XqiQ8R</bpmn:incoming>
+      <bpmn:outgoing>edge_XqiQ8R_ZcUcDt</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_ZcUcDt" name="ClaimSupervisorReview">
+      <bpmn:incoming>edge_ZcUcDt_WogvLk</bpmn:incoming>
+      <bpmn:outgoing>edge_WogvLk_Gateway</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="edge_Y9T9sF" name="Approve" sourceRef="Gateway_KXuPfP" targetRef="Activity_ncoQVu">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="edge_j2lFMX" sourceRef="Event_mhV0AR" targetRef="Activity_LUTApu" />
+    <bpmn:sequenceFlow id="edge_LUTApu_XqiQ8R" sourceRef="Activity_LUTApu" targetRef="Activity_XqiQ8R" />
+    <bpmn:sequenceFlow id="edge_XqiQ8R_ZcUcDt" sourceRef="Activity_XqiQ8R" targetRef="Activity_WogvLk" />
+    <bpmn:sequenceFlow id="edge_ZcUcDt_WogvLk" sourceRef="Activity_WogvLk" targetRef="Activity_ZcUcDt" />
+    <bpmn:sequenceFlow id="edge_WogvLk_Gateway" sourceRef="Activity_ZcUcDt" targetRef="Gateway_KXuPfP" />
+    <bpmn:sequenceFlow id="edge_E1M8B4" sourceRef="Activity_ncoQVu" targetRef="Activity_2dYmFI" />
+    <bpmn:sequenceFlow id="edge_2dYmFI_mNRQwP" sourceRef="Activity_2dYmFI" targetRef="Activity_mNRQwP" />
+    <bpmn:sequenceFlow id="edge_5KSVUg" name="Reject" sourceRef="Gateway_KXuPfP" targetRef="Activity_2dYmFI" />
+    <bpmn:sequenceFlow id="edge_jGlnbz" sourceRef="Activity_mNRQwP" targetRef="Event_3qzhYq" />
+    <bpmn:association id="assoc_fVqkGj" sourceRef="Event_mhV0AR" targetRef="Text_fVqkGj" />
+    <bpmn:association id="assoc_JB6Ixa" sourceRef="Activity_LUTApu" targetRef="Text_JB6Ixa" />
+    <bpmn:association id="assoc_RAiiGv" sourceRef="Activity_XqiQ8R" targetRef="Text_RAiiGv" />
+    <bpmn:association id="assoc_kocoA4" sourceRef="Activity_ZcUcDt" targetRef="Text_kocoA4" />
+    <bpmn:association id="assoc_R8qmFY" sourceRef="Activity_WogvLk" targetRef="Text_R8qmFY" />
+    <bpmn:association id="assoc_tPoiSO" sourceRef="Gateway_KXuPfP" targetRef="Text_tPoiSO" />
+    <bpmn:association id="assoc_2qZGp1" sourceRef="Activity_ncoQVu" targetRef="Text_2qZGp1" />
+    <bpmn:association id="assoc_rmDoUH" sourceRef="Activity_2dYmFI" targetRef="Text_rmDoUH" />
+    <bpmn:association id="assoc_o4hY7a" sourceRef="Activity_mNRQwP" targetRef="Text_o4hY7a" />
+    <bpmn:textAnnotation id="Text_fVqkGj">
+      <bpmn:text>Start Event – Claim Ready for Review and available supporting documents are ready for processing.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Text_JB6Ixa">
+      <bpmn:text>Fraud Risk Assessment: Retrieves the claim record and evaluates predefined risk indicators.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Text_RAiiGv">
+      <bpmn:text>Download Supporting Document: Downloads the claim PDF from the Data Fabric record.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Text_kocoA4">
+      <bpmn:text>Supervisor Claim Validation: Presents the claim details, supporting document, and risk assessment.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Text_R8qmFY">
+      <bpmn:text>Send Notify Email to Claimant: Sends a notification email to the user.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Text_tPoiSO">
+      <bpmn:text>Reviewer Decision Gateway: Routes the process according to the supervisor's final action.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Text_2qZGp1">
+      <bpmn:text>Settlement Coded Agent: Calculates settlement eligibility.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Text_rmDoUH">
+      <bpmn:text>Generate Decision Email: Generates a concise HTML decision email for approval, rejection, or settlement ineligibility.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Text_o4hY7a">
+      <bpmn:text>Send Decision Email: Sends the generated approval or rejection decision email to the claimant.</bpmn:text>
+    </bpmn:textAnnotation>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="S_Activity_LUTApu" bpmnElement="Activity_LUTApu">
+        <dc:Bounds x="206" y="168" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="206" y="253" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Gateway_KXuPfP" bpmnElement="Gateway_KXuPfP">
+        <dc:Bounds x="871" y="183" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="871" y="238" width="50" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_WogvLk" bpmnElement="Activity_WogvLk">
+        <dc:Bounds x="510" y="168" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="510" y="253" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_2dYmFI" bpmnElement="Activity_2dYmFI">
+        <dc:Bounds x="1022" y="168" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1022" y="253" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_mNRQwP" bpmnElement="Activity_mNRQwP">
+        <dc:Bounds x="1182" y="168" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1182" y="253" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Event_3qzhYq" bpmnElement="Event_3qzhYq">
+        <dc:Bounds x="1342" y="190" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1342" y="231" width="36" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_ncoQVu" bpmnElement="Activity_ncoQVu">
+        <dc:Bounds x="846" y="56" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="846" y="141" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Text_fVqkGj" bpmnElement="Text_fVqkGj">
+        <dc:Bounds x="54" y="40" width="148" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="54" y="125" width="148" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Event_mhV0AR" bpmnElement="Event_mhV0AR">
+        <dc:Bounds x="110" y="190" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="110" y="231" width="36" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Y9T9sF" bpmnElement="edge_Y9T9sF">
+        <di:waypoint x="896" y="183" />
+        <di:waypoint x="896" y="136" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="S_Text_JB6Ixa" bpmnElement="Text_JB6Ixa">
+        <dc:Bounds x="158" y="296" width="196" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="381" width="196" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_XqiQ8R" bpmnElement="Activity_XqiQ8R">
+        <dc:Bounds x="366" y="168" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="366" y="253" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Text_RAiiGv" bpmnElement="Text_RAiiGv">
+        <dc:Bounds x="326" y="40" width="180" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="326" y="125" width="180" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Text_kocoA4" bpmnElement="Text_kocoA4">
+        <dc:Bounds x="478" y="288" width="164" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="478" y="373" width="164" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Text_R8qmFY" bpmnElement="Text_R8qmFY">
+        <dc:Bounds x="662" y="48" width="148" height="64" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="662" y="117" width="148" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Text_tPoiSO" bpmnElement="Text_tPoiSO">
+        <dc:Bounds x="814" y="320" width="164" height="64" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="814" y="389" width="164" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Text_2qZGp1" bpmnElement="Text_2qZGp1">
+        <dc:Bounds x="838" y="-56" width="116" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="838" y="29" width="116" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Text_rmDoUH" bpmnElement="Text_rmDoUH">
+        <dc:Bounds x="982" y="-16" width="180" height="64" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="982" y="53" width="180" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Text_o4hY7a" bpmnElement="Text_o4hY7a">
+        <dc:Bounds x="1150" y="304" width="164" height="64" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1150" y="373" width="164" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_j2lFMX" bpmnElement="edge_j2lFMX">
+        <di:waypoint x="146" y="208" />
+        <di:waypoint x="206" y="208" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_LUTApu_XqiQ8R" bpmnElement="edge_LUTApu_XqiQ8R">
+        <di:waypoint x="306" y="208" />
+        <di:waypoint x="366" y="208" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_XqiQ8R_ZcUcDt" bpmnElement="edge_XqiQ8R_ZcUcDt">
+        <di:waypoint x="466" y="208" />
+        <di:waypoint x="510" y="208" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_ZcUcDt_WogvLk" bpmnElement="edge_ZcUcDt_WogvLk">
+        <di:waypoint x="610" y="208" />
+        <di:waypoint x="686" y="208" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_WogvLk_Gateway" bpmnElement="edge_WogvLk_Gateway">
+        <di:waypoint x="786" y="208" />
+        <di:waypoint x="871" y="208" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_E1M8B4" bpmnElement="edge_E1M8B4">
+        <di:waypoint x="946" y="96" />
+        <di:waypoint x="1072" y="96" />
+        <di:waypoint x="1072" y="168" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_2dYmFI_mNRQwP" bpmnElement="edge_2dYmFI_mNRQwP">
+        <di:waypoint x="1122" y="208" />
+        <di:waypoint x="1182" y="208" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="S_Activity_ZcUcDt" bpmnElement="Activity_ZcUcDt">
+        <dc:Bounds x="686" y="168" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="686" y="253" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_5KSVUg" bpmnElement="edge_5KSVUg">
+        <di:waypoint x="921" y="208" />
+        <di:waypoint x="1022" y="208" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_jGlnbz" bpmnElement="edge_jGlnbz">
+        <di:waypoint x="1282" y="208" />
+        <di:waypoint x="1342" y="208" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_assoc_fVqkGj" bpmnElement="assoc_fVqkGj">
+        <di:waypoint x="128" y="190" />
+        <di:waypoint x="128" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_assoc_JB6Ixa" bpmnElement="assoc_JB6Ixa">
+        <di:waypoint x="256" y="248" />
+        <di:waypoint x="256" y="296" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_assoc_RAiiGv" bpmnElement="assoc_RAiiGv">
+        <di:waypoint x="416" y="168" />
+        <di:waypoint x="416" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_assoc_kocoA4" bpmnElement="assoc_kocoA4">
+        <di:waypoint x="560" y="248" />
+        <di:waypoint x="560" y="288" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_assoc_R8qmFY" bpmnElement="assoc_R8qmFY">
+        <di:waypoint x="736" y="168" />
+        <di:waypoint x="736" y="112" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_assoc_tPoiSO" bpmnElement="assoc_tPoiSO">
+        <di:waypoint x="896" y="233" />
+        <di:waypoint x="896" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_assoc_2qZGp1" bpmnElement="assoc_2qZGp1">
+        <di:waypoint x="896" y="56" />
+        <di:waypoint x="896" y="24" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_assoc_rmDoUH" bpmnElement="assoc_rmDoUH">
+        <di:waypoint x="1072" y="168" />
+        <di:waypoint x="1072" y="48" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_assoc_o4hY7a" bpmnElement="assoc_o4hY7a">
+        <di:waypoint x="1232" y="248" />
+        <di:waypoint x="1232" y="304" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -116,10 +116,14 @@ a:hover{text-decoration:underline}
 .nav details[open]>summary::before{content:"\25BE"}
 .nav .group-items{padding:2px 0 8px}
 
-.lesson-row{display:block;padding:7px 10px;border-radius:7px;color:var(--muted);font-size:14px;font-weight:500}
+.nav a.lesson-row,.lesson-row{display:flex;gap:6px;align-items:baseline;padding:7px 10px;border-radius:7px;color:var(--muted);font-size:14px;font-weight:500}
 .lesson-row:hover{background:#fff;color:var(--text);text-decoration:none}
-.lesson-row .lesson-ico,.lesson-row .lesson-status{display:none}
-.lesson-row .lesson-label{display:block}
+.lesson-row .lesson-status{display:none}
+.lesson-row .lesson-ico{display:inline-block;min-width:1.6em;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.nav .nav-section{margin:12px 0 4px;padding:0 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.md-content details{margin:14px 0}
+.md-content details summary{cursor:pointer}
+.lesson-row .lesson-label{display:block;flex:1}
 .lesson-row.active{background:var(--up-orange-soft);color:var(--up-orange-dark);font-weight:700;box-shadow:inset 3px 0 0 var(--up-orange)}
 
 /* ---------- TOC ---------- */
@@ -277,3 +281,7 @@ figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;
 .group-header h2{color:#fff;border-bottom:none;margin:2px 0 0;padding-bottom:0;}
 .toc a.lvl3{padding-left:24px;font-size:13px;color:var(--muted);}
 .toc a b{color:var(--text);}
+.table-wrap{overflow-x:auto;max-width:100%;margin:12px 0}
+.table-wrap table{margin:0}
+.table-wrap td code{white-space:nowrap}
+.kv{display:block;font-size:13px;line-height:1.5}
