@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Test and Push the Coded Agent · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -84,8 +84,8 @@
           </tbody>
         </table>
         <p>The model may phrase <code>message</code> differently, but <code>eligible</code>, <code>settlement_percentage</code> and <code>settlement_amount</code> must match exactly.</p>
-    <div class="step" id="step-59">
-      <div class="num">59</div>
+    <div class="step" id="step-62">
+      <div class="num">62</div>
       <div class="body">
         <h3>Run test: Eligible full coverage</h3>
         <p>Replace the contents of <code>input.json</code> with:</p>
@@ -124,8 +124,8 @@ settlement_amount: 15817.5</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-60">
-      <div class="num">60</div>
+    <div class="step" id="step-63">
+      <div class="num">63</div>
       <div class="body">
         <h3>Run test: Eligible partial coverage</h3>
         <p>Replace the contents of <code>input.json</code> with:</p>
@@ -164,8 +164,8 @@ settlement_amount: 2250.0</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-61">
-      <div class="num">61</div>
+    <div class="step" id="step-64">
+      <div class="num">64</div>
       <div class="body">
         <h3>Run test: Suspended fraud verdict</h3>
         <p>Replace the contents of <code>input.json</code> with:</p>
@@ -204,8 +204,8 @@ settlement_amount: 0.0</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-62">
-      <div class="num">62</div>
+    <div class="step" id="step-65">
+      <div class="num">65</div>
       <div class="body">
         <h3>Run test: Unsupported coverage value</h3>
         <p>Replace the contents of <code>input.json</code> with:</p>
@@ -244,8 +244,8 @@ settlement_amount: 0.0</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-63">
-      <div class="num">63</div>
+    <div class="step" id="step-66">
+      <div class="num">66</div>
       <div class="body">
         <h3>Run test: Inactive policy (optional)</h3>
         <p>Replace the contents of <code>input.json</code> with:</p>
@@ -292,8 +292,8 @@ settlement_amount: 0.0</code></pre>
           <div class="adm-title">📝 If the instructor requires both shells</div>
           <div class="adm-body">Run all tests in PowerShell, close it, open Command Prompt and repeat them after <code>cd /d "%USERPROFILE%\Settlement_Coded_Agent"</code> and <code>call .venv\Scripts\activate.bat</code>. The results must match. Push only once, from the shell that holds the completed project.</div>
         </div>
-    <div class="step" id="step-64">
-      <div class="num">64</div>
+    <div class="step" id="step-67">
+      <div class="num">67</div>
       <div class="body">
         <h3>Push the coded agent to Studio Web</h3>
         <p>Only after all tests pass, run:</p>
@@ -317,6 +317,10 @@ Updating 'uipath.json'
 Importing referenced resources to Studio Web project...
  Resource import summary: 0 total resources - 0 created, 0 updated, ...</code></pre>
         </div>
+        </div>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Troubleshooting: project temporarily locked</div>
+          <div class="adm-body">If <code>uip codedagent push</code> returns <i>The project is temporarily locked. This could be due to modifications or active processes. Please wait a moment and try again.</i>:<ol style="margin:6px 0 0 18px;padding:0"><li>Wait 2–3 minutes.</li><li>Make sure the project is not being edited in Studio Web (close its tab or stop any debug run).</li><li>Run <code>uip codedagent push</code> again.</li><li>When it succeeds, check that the latest changes appear in the existing Studio Web solution.</li></ol>Do not recreate the project — the lock clears by itself.</div>
         </div>
         <p>Back in Studio Web, <code>Settlement_Coded_Agent</code> shows <i>A new version is available</i>. Click <b>Reload</b>.</p>
         <figure>
@@ -366,6 +370,6 @@ Importing referenced resources to Studio Web project...
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

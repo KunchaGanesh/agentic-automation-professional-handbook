@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Create the Settlement Coded Agent · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -72,6 +72,19 @@
       <div class="card"><div class="ico">🧠</div><h4>LLM interprets</h4><p>The model only normalizes the free-text incident type and coverage values (for example <i>Vehicle Damage</i> → <code>Vehicle</code>).</p></div>
       <div class="card"><div class="ico">🧮</div><h4>Python decides</h4><p>Policy status, fraud verdict, eligibility, the 95% / 90% calculation, rounding and the fallback are deterministic Python rules.</p></div>
     </div>
+    <h3>Why a coded agent in this solution?</h3>
+    <p>By the time a claim reaches settlement, the supervisor has approved it. What remains is a <b>money decision</b>: is the claim eligible, and how much do we pay? That calls for rules that are exact, repeatable and auditable — the same input must always give the same amount. A low-code agent decides with a prompt, which is flexible but not guaranteed to calculate the same way every time. A <b>UiPath Coded Agent</b> lets you write that logic in Python while keeping the agent fully inside the UiPath platform.</p>
+    <table>
+      <thead><tr><th>UiPath Coded Agents give you</th><th>How this solution uses it</th></tr></thead>
+      <tbody>
+        <tr><td><b>Code-first control</b> — Python with LangGraph or LlamaIndex, unit-testable on your machine</td><td>Policy, fraud and coverage rules plus the 95% / 90% calculation are plain Python you test with <code>uip codedagent run</code></td></tr>
+        <tr><td><b>Governed LLM access</b> through the UiPath LLM Gateway and AI Trust Layer — no API keys in code</td><td>The agent calls Claude Haiku 4.5 only to normalize free text</td></tr>
+        <tr><td><b>Same lifecycle as other automations</b> — part of the solution, versioned, deployed and traced in Orchestrator</td><td><code>Settlement_Coded_Agent</code> lives in <code>Insurance_Claim_Solution</code> and is deployed with Maestro</td></tr>
+        <tr><td><b>Typed inputs and outputs</b> generated from your code</td><td>Maestro maps five inputs and four outputs exactly like any other agent task</td></tr>
+      </tbody>
+    </table>
+    <h3>Why this LLM?</h3>
+    <p>The class uses <b>anthropic.claude-haiku-4-5-20251001-v1:0</b>. The model's only job here is small and well defined: turn values such as <i>Vehicle Damage</i> or <i>full cover</i> into one of a few allowed words and return a tiny JSON object. A fast, low-cost model is enough for that, keeps each settlement quick and cheap, and the important decisions never depend on it — if the model's answer cannot be read, the code falls back to <b>manual review</b>. Everyone uses the same model so results are comparable across the class.</p>
     <h3>How Studio Web and your terminal fit together</h3>
     <p>There are two parts to this exercise, but only <b>one</b> coded-agent project:</p>
     <ol>
@@ -93,8 +106,8 @@
           <div class="adm-title">⚠️ One solution only</div>
           <div class="adm-body">Do not create a second cloud solution, and do not publish the coded agent as a separate standalone deployment. Never create a second Agent project in Studio Web for the same agent.</div>
         </div>
-    <div class="step" id="step-47">
-      <div class="num">47</div>
+    <div class="step" id="step-50">
+      <div class="num">50</div>
       <div class="body">
         <h3>Add a coded agent to the solution</h3>
         <p>In the <b>Explorer</b> of <code>Insurance_Claim_Solution</code> click <b>+</b> and choose <b>Agent</b> under <b>Building blocks</b>.</p>
@@ -130,11 +143,11 @@
       </div>
     </div>
 
-    <div class="step" id="step-48">
-      <div class="num">48</div>
+    <div class="step" id="step-51">
+      <div class="num">51</div>
       <div class="body">
         <h3>Rename the project and start with the sample</h3>
-        <p>Right-click the new <b>Agent</b> project, choose <b>Rename</b> and name it <code>Settlement_Coded_Agent</code>.</p>
+        <p>Right-click the new <b>Agent</b> project, choose <b>Rename</b> and name it <code class="copyable">Settlement_Coded_Agent</code>.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -161,14 +174,14 @@
           <figcaption>Quick start: LangChain → Start with sample.</figcaption>
         </figure>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Renamed the project to <code>Settlement_Coded_Agent</code>.</div></div>
+          <div class="row"><span class="box"></span><div>Renamed the project to <code class="copyable">Settlement_Coded_Agent</code>.</div></div>
           <div class="row"><span class="box"></span><div>Created it from the <b>LangChain</b> sample.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-49">
-      <div class="num">49</div>
+    <div class="step" id="step-52">
+      <div class="num">52</div>
       <div class="body">
         <h3>Copy your project ID</h3>
         <p>Studio Web shows the sample graph. In the properties panel copy the <b>Project ID</b> (it is also shown as <code>UIPATH_PROJECT_ID</code> under <b>Sync from your IDE into Studio</b>). You will paste it into <code>.env</code> in the next lesson.</p>
@@ -213,6 +226,6 @@
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

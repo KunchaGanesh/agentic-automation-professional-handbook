@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Build the Fraud Detect Agent · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -72,8 +72,8 @@
     <p>Agent Builder offers two low-code agent types. A <b>Conversational Agent</b> — like the conversational agent from Module 1 — chats with a user in real time. An <b>Autonomous Agent</b> runs a task end to end on its own, with no back-and-forth: it receives inputs, does its reasoning and tool calls, and returns a fixed output shape. The Fraud Detect Agent is autonomous — nobody chats with it, Maestro just calls it and reads the result.</p>
 
             <p>You will create the <b>Fraud Detect Agent</b> — an autonomous agent that receives the complete claim record from Maestro, scores it for fraud, and returns a verdict, a routing action, and a neutral customer email. It never calls tools or queries Data Fabric itself.</p>
-    <div class="step" id="step-28">
-      <div class="num">28</div>
+    <div class="step" id="step-30">
+      <div class="num">30</div>
       <div class="body">
         <h3>Create the agent</h3>
         <p>Start a new project in Studio Web (<b>Start building → Agent</b>), or in an existing solution click <b>+</b> in the Explorer and choose <b>Agent</b> under <b>TASK AUTOMATION</b>.</p>
@@ -89,7 +89,7 @@
           </div>
           <figcaption>Explorer → + → Agent.</figcaption>
         </figure>
-        <p>Rename the agent to <code>Fraud_Detect_Agent</code>, select <b>Autonomous</b> under <b>LOW-CODE</b> ("runs a task end to end on its own"), leave the Autopilot description box empty, and click <b>Start fresh</b>.</p>
+        <p>Rename the agent to <code class="copyable">Fraud_Detect_Agent</code>, select <b>Autonomous</b> under <b>LOW-CODE</b> ("runs a task end to end on its own"), leave the Autopilot description box empty, and click <b>Start fresh</b>.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -102,19 +102,6 @@
           </div>
           <figcaption>Rename the agent, choose Autonomous, then Start fresh.</figcaption>
         </figure>
-        <p>In the agent properties keep the <b>Standard harness</b> and pick an available <b>Model</b> (for example <b>Gemini 3.5 Flash</b>). Leave the model settings at their defaults.</p>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Studio Web · Fraud_Detect_Agent</span>
-            </div>
-            <img src="assets/fraud_agent_model_select.png" alt="Standard harness and the selected model." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Standard harness and the selected model.</figcaption>
-        </figure>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Created <code>Fraud_Detect_Agent</code> in <code>Insurance_Claim_Solution</code>.</div></div>
           <div class="row"><span class="box"></span><div>Selected <b>Low-code → Autonomous</b> and clicked <b>Start fresh</b>.</div></div>
@@ -122,8 +109,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-29">
-      <div class="num">29</div>
+    <div class="step" id="step-31">
+      <div class="num">31</div>
       <div class="body">
         <h3>Define the input argument</h3>
         <p>Open <b>Data manager</b>, switch the <b>Inputs</b> view to JSON, and replace the schema with the one below. The agent needs only one input: <code>in_ClaimData</code>, the complete claim record that Maestro reads from Data Fabric and passes in.</p>
@@ -161,8 +148,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-30">
-      <div class="num">30</div>
+    <div class="step" id="step-32">
+      <div class="num">32</div>
       <div class="body">
         <h3>Define the output arguments</h3>
         <p>Switch to <b>Outputs</b> (JSON view) and paste the schema below. It defines four objects the agent must return: the claim identity fields, the fraud analysis, a suggested customer email, and a routing status for Maestro.</p>
@@ -284,8 +271,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-31">
-      <div class="num">31</div>
+    <div class="step" id="step-33">
+      <div class="num">33</div>
       <div class="body">
         <h3>Write the system prompt</h3>
         <p>In the agent <b>Definition</b>, replace the default <b>System prompt</b> with the text below. It maps the record's raw field names to plain ones, normalises amounts and missing values, applies nine independent scoring rules (capped at 100), classifies the result as LOW / MEDIUM / HIGH / CRITICAL with a verdict and routing action, and drafts a neutral email that never mentions fraud.</p>
@@ -452,8 +439,8 @@ Before returning, verify:
       </div>
     </div>
 
-    <div class="step" id="step-32">
-      <div class="num">32</div>
+    <div class="step" id="step-34">
+      <div class="num">34</div>
       <div class="body">
         <h3>Write the user prompt</h3>
         <p>The default <b>User prompt</b> ("What is the current date?") is only a placeholder. Replace it with the text below. After typing <b>Claim data:</b>, insert the <code>in_ClaimData</code> argument so it appears as a variable chip.</p>
@@ -489,6 +476,41 @@ Claim data: {{input.in_ClaimData}}</code></pre>
 
 
 
+    <div class="step" id="step-35">
+      <div class="num">35</div>
+      <div class="body">
+        <h3>Select the model and model settings</h3>
+        <p>Before you debug the agent, open its properties. Keep the <b>Standard harness</b>, select <b>Claude Sonnet 4.5</b> as the <b>Model</b> and review the model settings.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Fraud_Detect_Agent</span>
+            </div>
+            <img src="assets/fraud_agent_model_select.png" alt="Claude Sonnet 4.5 with the model settings." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Claude Sonnet 4.5 with the model settings.</figcaption>
+        </figure>
+        <h4>Why this model</h4>
+        <p>The Fraud Detect Agent works on its own, with no human in the conversation. It must read a whole claim record, compare it with the policy, weigh several fraud indicators, produce a risk score and verdict, and return <b>structured outputs</b> (<code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>) that Maestro maps field by field. That needs strong <b>reasoning</b> and reliable <b>JSON output</b>, which is why a larger reasoning model such as Claude Sonnet 4.5 is used here instead of a small, fast model.</p>
+        <table>
+          <thead><tr><th>Setting</th><th>What it does</th><th>Recommended here</th></tr></thead>
+          <tbody>
+            <tr><td><b>Temperature</b></td><td>Randomness of the answer.</td><td>Low — the same claim should get the same verdict on every run</td></tr>
+            <tr><td><b>Max. tokens per response</b></td><td>Longest output the agent may produce.</td><td>Keep high enough for the full analysis and the suggested email</td></tr>
+            <tr><td><b>Max. iterations</b></td><td>How many reasoning / tool-call loops the agent may take before it must answer.</td><td>Keep the default; raise it only if runs stop early</td></tr>
+            <tr><td><b>Thinking type / budget</b></td><td>Extended reasoning before answering (advanced setting).</td><td>Off by default; it adds cost and time</td></tr>
+            <tr><td><b>Guardrails</b></td><td>Extra policy checks on inputs and outputs.</td><td>Optional for the exercise</td></tr>
+          </tbody>
+        </table>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Selected <b>Claude Sonnet 4.5</b> and kept a low temperature.</div></div>
+        </div>
+      </div>
+    </div>
+
     <nav class="md-footer-nav">
       <a class="prev" href="start-event.html"><span class="dir">← Previous</span><span class="ttl">Start Event</span></a>
       <a class="next" href="fraud-agent-evaluate.html"><span class="dir">Next →</span><span class="ttl">Test and Evaluate the Fraud Agent</span></a>
@@ -497,6 +519,6 @@ Claim data: {{input.in_ClaimData}}</code></pre>
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

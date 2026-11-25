@@ -152,4 +152,37 @@
   } else {
     initChecklists();
   }
+
+  /* ---------- 3. Inline copy buttons (names, values, expressions) ---------- */
+  function initInlineCopy() {
+    var targets = [];
+    var cells = document.querySelectorAll('.md-content td');
+    for (var i = 0; i < cells.length; i++) {
+      var codes = cells[i].querySelectorAll('code');
+      if (codes.length === 1 && cells[i].textContent.trim() === codes[0].textContent.trim()) targets.push(codes[0]);
+    }
+    var marked = document.querySelectorAll('.md-content code.copyable');
+    for (var j = 0; j < marked.length; j++) targets.push(marked[j]);
+    targets.forEach(function (code) {
+      if (code.nextSibling && code.nextSibling.className === 'copy-btn inline-copy') return;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'copy-btn inline-copy';
+      btn.title = 'Copy to clipboard';
+      btn.setAttribute('aria-label', 'Copy ' + code.textContent);
+      btn.addEventListener('click', function () {
+        var text = code.textContent;
+        var done = function (ok) { flash(btn, ok); };
+        if (navigator.clipboard && navigator.clipboard.writeText && (window.isSecureContext !== false)) {
+          navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(fallbackCopy(text)); });
+        } else { done(fallbackCopy(text)); }
+      });
+      code.parentNode.insertBefore(btn, code.nextSibling);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initInlineCopy);
+  } else {
+    initInlineCopy();
+  }
 })();

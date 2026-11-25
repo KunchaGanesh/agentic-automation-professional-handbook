@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Start Event · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -66,8 +66,8 @@
     <h1>Start Event</h1>
     <div class="rise-divider"></div>
         <p>Begin with the start event: it makes the whole process start on its own the moment a claim is ready for a decision. You configure the start event to listen for an <b>updated Data Fabric record</b> whose <code>DecisionInput</code> equals <code>READY_FOR_REVIEW</code>.</p>
-    <div class="step" id="step-24">
-      <div class="num">24</div>
+    <div class="step" id="step-26">
+      <div class="num">26</div>
       <div class="body">
         <h3>Open the start event trigger</h3>
         <p>Select the start event <b>Claim Ready for Review</b> on the canvas. In <b>Properties → Implementation</b>, open the <b>Action</b> dropdown (currently <b>None</b>).</p>
@@ -103,8 +103,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-25">
-      <div class="num">25</div>
+    <div class="step" id="step-27">
+      <div class="num">27</div>
       <div class="body">
         <h3>Set the connection and Tenant scope</h3>
         <p>Set <b>Select activity</b> to <b>Record Updated</b> and the <b>UiPath Data Fabric connection</b> to <b>Shared UiPath Data Fabric</b>. Then open <b>Entity Scope</b> and choose <b>Tenant</b>.</p>
@@ -144,8 +144,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-26">
-      <div class="num">26</div>
+    <div class="step" id="step-28">
+      <div class="num">28</div>
       <div class="body">
         <h3>Add the filter</h3>
         <p>Click the <b>Filter</b> field to open the filter builder. Keep <b>All (AND)</b>, add a condition — field <code>DecisionInput</code>, operator <b>Equals</b>, value <code>READY_FOR_REVIEW</code> — and click <b>Save</b>. Only claims marked ready for review will start the process.</p>
@@ -169,11 +169,15 @@
 
 
 
-    <div class="step" id="step-27">
-      <div class="num">27</div>
+    <div class="step" id="step-29">
+      <div class="num">29</div>
       <div class="body">
         <h3>Debug and check the start event</h3>
         <p>Click <b>Debug</b>. In the <b>Execution trail</b> the start event <b>Claim Ready for Review</b> should succeed, and under <b>Global variables</b> the <code>response</code> variable should hold the claim record from <code>IntakeClaimEntity</code>. The later tasks are not configured yet, so they may fail for now.</p>
+        <div class="adm tip">
+          <div class="adm-title">💡 Start event failed or never fired?</div>
+          <div class="adm-body">The start event only fires for a claim record that is <b>ready for review</b>. Run your <b>Insurance Claim Agent</b> (or the Claim App) and submit a new claim so a fresh record is created in <code>IntakeClaimEntity</code>, then run the Maestro debug again.</div>
+        </div>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -200,6 +204,6 @@
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Build the Coded Agent Locally · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -76,8 +76,8 @@
             <tr><td>Permission to use the instructor-approved LLM</td><td>The agent calls it through the UiPath LLM Gateway.</td></tr>
           </tbody>
         </table>
-    <div class="step" id="step-50">
-      <div class="num">50</div>
+    <div class="step" id="step-53">
+      <div class="num">53</div>
       <div class="body">
         <h3>Check and install the required tools</h3>
         <p>Do this once per machine. Run each check; if it prints a version number the tool is installed and you can skip its install.</p>
@@ -120,8 +120,8 @@ uip tools install @uipath/codedagent-tool</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-51">
-      <div class="num">51</div>
+    <div class="step" id="step-54">
+      <div class="num">54</div>
       <div class="body">
         <h3>Create the project folder and virtual environment</h3>
         <div class="copy-wrap">
@@ -159,8 +159,8 @@ call .venv\Scripts\activate.bat</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-52">
-      <div class="num">52</div>
+    <div class="step" id="step-55">
+      <div class="num">55</div>
       <div class="body">
         <h3>Install the dependencies and register the environment</h3>
         <div class="copy-wrap">
@@ -192,8 +192,8 @@ uip codedagent setup --force</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-53">
-      <div class="num">53</div>
+    <div class="step" id="step-56">
+      <div class="num">56</div>
       <div class="body">
         <h3>Sign in to UiPath</h3>
         <div class="copy-wrap">
@@ -222,8 +222,8 @@ uip codedagent setup --force</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-54">
-      <div class="num">54</div>
+    <div class="step" id="step-57">
+      <div class="num">57</div>
       <div class="body">
         <h3>Save your project ID to .env</h3>
         <p>Use the project ID you copied in Studio Web. <code>.env</code> must contain only <code>UIPATH_PROJECT_ID=</code> followed by the plain ID — no quotes, no spaces and no <code>%</code> signs.</p>
@@ -269,8 +269,8 @@ echo .env&gt;&gt; .gitignore</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-55">
-      <div class="num">55</div>
+    <div class="step" id="step-58">
+      <div class="num">58</div>
       <div class="body">
         <h3>Create the local scaffold</h3>
         <div class="copy-wrap">
@@ -303,8 +303,8 @@ echo .env&gt;&gt; .gitignore</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-56">
-      <div class="num">56</div>
+    <div class="step" id="step-59">
+      <div class="num">59</div>
       <div class="body">
         <h3>Select the model</h3>
         <p>The instructor chooses one model for the class so results are comparable. List the models available to your tenant:</p>
@@ -333,8 +333,8 @@ echo .env&gt;&gt; .gitignore</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-57">
-      <div class="num">57</div>
+    <div class="step" id="step-60">
+      <div class="num">60</div>
       <div class="body">
         <h3>Replace main.py with the settlement agent</h3>
         <p>Open the file (<code>notepad .\main.py</code> in PowerShell, <code>notepad main.py</code> in Command Prompt). Press <b>Ctrl+A</b>, delete the sample report-generator code, paste the complete code below, then save and close Notepad.</p>
@@ -488,6 +488,20 @@ builder.add_edge("settle_claim", END)
 graph = builder.compile()</code></pre>
         </div>
         </div>
+        <h4>What the code contains</h4>
+        <table>
+          <thead><tr><th>Part of main.py</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><b>Imports</b></td><td><code>json</code> and <code>re</code> to read the model's answer, LangChain message types, LangGraph's <code>StateGraph</code>, Pydantic's <code>BaseModel</code> and <code>UiPathChatAnthropicBedrock</code> — the UiPath LLM Gateway client for Claude.</td></tr>
+            <tr><td><code>GraphState</code> (inputs)</td><td>The five fields Maestro sends: <code>insurance_type</code>, <code>coverage</code>, <code>claim_amount</code>, <code>policy_status</code>, <code>fraud_verdict</code>. <code>uip codedagent init</code> turns these into the agent's input schema.</td></tr>
+            <tr><td><code>GraphOutput</code> (outputs)</td><td>The four fields returned to Maestro: <code>eligible</code>, <code>settlement_percentage</code>, <code>settlement_amount</code>, <code>message</code>.</td></tr>
+            <tr><td><b>1 · Ask the LLM to normalize</b></td><td>Inside <code>settle_claim</code> the model gets the free-text type and coverage and must reply with JSON using only the allowed values (Medical, Stolen, Theft, Water Damage, Vehicle, Fire / Full, Partial).</td></tr>
+            <tr><td><b>2 · Read the answer safely</b></td><td>A regular expression pulls the <code>{...}</code> block out of the reply and <code>json.loads</code> parses it. If anything fails, the agent returns <i>manual review</i> with a zero settlement instead of guessing.</td></tr>
+            <tr><td><b>3 · Business rules, in order</b></td><td>Not eligible when the policy is not <b>Active</b>, the fraud verdict is <b>SUSPEND</b> or <b>REJECT</b>, the type is not in the allowed list, the coverage is not Full or Partial, or the amount is zero or less. Each rule returns a clear message.</td></tr>
+            <tr><td><b>4 · Calculate</b></td><td>Full coverage pays <b>95%</b>, Partial pays <b>90%</b>; the amount is rounded to 2 decimals in Python, never by the model.</td></tr>
+            <tr><td><b>5 · Build the graph</b></td><td><code>StateGraph</code> with one node, <code>settle_claim</code>, wired <code>START → settle_claim → END</code> and compiled into <code>graph</code>, which UiPath runs as the agent's entry point.</td></tr>
+          </tbody>
+        </table>
         <div class="adm note">
           <div class="adm-title">📝 Why named fields?</div>
           <div class="adm-body"><code>GraphOutput</code> is a Pydantic model, so every return uses named fields (<code>eligible=...</code>, <code>settlement_percentage=...</code>). Positional values fail with <i>BaseModel.__init__() takes 1 positional argument but 5 were given</i>.</div>
@@ -502,8 +516,8 @@ graph = builder.compile()</code></pre>
       </div>
     </div>
 
-    <div class="step" id="step-58">
-      <div class="num">58</div>
+    <div class="step" id="step-61">
+      <div class="num">61</div>
       <div class="body">
         <h3>Initialize the project and verify the schema</h3>
         <div class="copy-wrap">
@@ -559,6 +573,6 @@ bindings.json
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

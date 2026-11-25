@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Debug and Deploy the Solution · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -66,8 +66,8 @@
     <h1>Debug and Deploy the Solution</h1>
     <div class="rise-divider"></div>
         <p>Every task is configured. Run the whole process in Debug, test both decision paths, then deploy the complete <code>Insurance_Claim_Solution</code>.</p>
-    <div class="step" id="step-73">
-      <div class="num">73</div>
+    <div class="step" id="step-76">
+      <div class="num">76</div>
       <div class="body">
         <h3>Debug the full process</h3>
         <p>Open <code>Insurance_Claim_MAESTRO</code> and click <b>Debug</b>. Start it with a real claim record (one you submitted with the Insurance Claim Agent). Every task turns green in the canvas and is listed in the <b>Execution trail</b>; open <b>Global variables</b> to check each task's outputs.</p>
@@ -92,8 +92,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-74">
-      <div class="num">74</div>
+    <div class="step" id="step-77">
+      <div class="num">77</div>
       <div class="body">
         <h3>Test both decision paths</h3>
         <table>
@@ -112,8 +112,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-75">
-      <div class="num">75</div>
+    <div class="step" id="step-78">
+      <div class="num">78</div>
       <div class="body">
         <h3>Deploy the solution</h3>
         <p>When end-to-end testing succeeds, click <b>Deploy</b> in the Studio Web toolbar for <code>Insurance_Claim_Solution</code>. The deployment includes the Insurance Claim Agent, the Claim App, Maestro, the Fraud Detect Agent and the Settlement Coded Agent together.</p>
@@ -152,8 +152,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-76">
-      <div class="num">76</div>
+    <div class="step" id="step-79">
+      <div class="num">79</div>
       <div class="body">
         <h3>Confirm the deployment</h3>
         <p>Wait for the stages Setup, Publish package, Configure, Deploy and Activate to show a green check and <b>Deployment successful</b>.</p>
@@ -189,8 +189,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-77">
-      <div class="num">77</div>
+    <div class="step" id="step-80">
+      <div class="num">80</div>
       <div class="body">
         <h3>Trigger the live process</h3>
         <p>The deployed process now starts by itself. Submit a new claim through the Claim App (or update an <code>IntakeClaimEntity</code> record and set <code>DecisionInput</code> to <code>READY_FOR_REVIEW</code>). The start event fires, the Fraud Detect Agent runs, and the claim reaches the supervisor as a task.</p>
@@ -212,6 +212,6 @@
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

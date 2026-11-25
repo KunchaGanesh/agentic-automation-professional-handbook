@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Settlement Coded Agent Task · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -66,8 +66,8 @@
     <h1>Settlement Coded Agent Task</h1>
     <div class="rise-divider"></div>
         <p>Wire the solution-managed <code>Settlement_Coded_Agent</code> into the <b>SettlementCodedAgent</b> service task that runs after the Reviewer Gateway approves a claim.</p>
-    <div class="step" id="step-65">
-      <div class="num">65</div>
+    <div class="step" id="step-68">
+      <div class="num">68</div>
       <div class="body">
         <h3>Select your coded agent</h3>
         <p>Open <code>Insurance_Claim_MAESTRO</code> and select the <b>SettlementCodedAgent</b> task. Set <b>Action</b> to <b>Start and wait for agent</b> and choose <b>Agent</b> = <code>Settlement_Coded_Agent</code> (click <b>Refresh</b> if it is not listed yet).</p>
@@ -89,8 +89,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-66">
-      <div class="num">66</div>
+    <div class="step" id="step-69">
+      <div class="num">69</div>
       <div class="body">
         <h3>Map the inputs</h3>
         <p>For each input click <b>@</b> → <b>Insert variable</b> and pick the value from the earlier tasks, for example <b>Fraud Detection Agent → out_ClaimDetails → incident_type</b>.</p>
@@ -138,8 +138,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-67">
-      <div class="num">67</div>
+    <div class="step" id="step-70">
+      <div class="num">70</div>
       <div class="body">
         <h3>Map the outputs</h3>
         <p>Map the agent outputs to the process variables <code>eligible</code>, <code>settlementPercentage</code>, <code>settlementAmount</code> and <code>settlementMessage</code>. Use <b>Insert variable</b> to select the actual output chips rather than typing names.</p>
@@ -160,6 +160,6 @@
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

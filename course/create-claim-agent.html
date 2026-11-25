@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Create the Insurance Claim Agent · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -141,21 +141,36 @@
       <div class="num">3</div>
       <div class="body">
         <h3>Select a model</h3>
-        <p>Open the agent <b>Definition</b>. Under <b>Model</b> open the dropdown and select any available LLM (for example the one marked <b>Suggested</b>).</p>
+        <p>Open the agent <b>Definition</b>. Keep the <b>Standard harness</b>, open the <b>Model</b> dropdown and select <b>Claude Sonnet 4</b> (or the model your instructor names).</p>
         <figure>
           <div class="shot">
             <div class="chrome">
               <span class="c" style="background:#FF5F57"></span>
               <span class="c" style="background:#FEBC2E"></span>
               <span class="c" style="background:#28C840"></span>
-              <span class="url">Studio Web · Agent Definition</span>
+              <span class="url">Studio Web · Insurance_Claim_Agent</span>
             </div>
-            <img src="assets/cn_step3_model.png" alt="Model dropdown → choose an available LLM." loading="lazy" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/cn_step3_model.png" alt="Standard harness, Claude Sonnet 4 and the model settings." loading="lazy" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>Model dropdown → choose an available LLM.</figcaption>
+          <figcaption>Standard harness, Claude Sonnet 4 and the model settings.</figcaption>
         </figure>
+        <h4>Why the model choice matters</h4>
+        <p>The model is the agent's brain: it reads the system prompt, decides which question to ask next, when to query <b>PolicyRecords</b> and <b>InsurancePolicyData</b>, when to call the IXP and <b>SaveClaimInformation</b> tools, and how to word every reply. A conversational intake agent has to follow a long, strict rulebook (one question per turn, never invent values, call the save workflow only once after <i>Submit</i>), so pick a model that is strong at <b>instruction following</b> and <b>tool calling</b>. Claude Sonnet 4 is a good balance of accuracy, speed and cost for this; a smaller model is cheaper but more likely to skip a rule or call a tool at the wrong time.</p>
+        <table>
+          <thead><tr><th>Setting</th><th>What it does</th><th>Recommended here</th></tr></thead>
+          <tbody>
+            <tr><td><b>Model</b></td><td>The LLM that runs the conversation and decides on tool calls.</td><td>Claude Sonnet 4 (Standard)</td></tr>
+            <tr><td><b>Temperature</b></td><td>How creative the wording is. Low = consistent, predictable answers; high = more varied text.</td><td>Low (towards <i>Precise</i>), so the agent follows the flow the same way every time</td></tr>
+            <tr><td><b>Max. tokens per response</b></td><td>The longest reply the agent may write in one turn.</td><td>Keep the default; the claim summary must not be cut off</td></tr>
+            <tr><td><b>Standard harness</b></td><td>The default agent runtime. Advanced harness is in preview.</td><td>Standard</td></tr>
+          </tbody>
+        </table>
+        <div class="adm note">
+          <div class="adm-title">📝 Model availability</div>
+          <div class="adm-body">Only models allowed by your tenant's AI Trust Layer appear in the list. Some models need a confirmation step before you can use them.</div>
+        </div>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Selected an available model.</div></div>
+          <div class="row"><span class="box"></span><div>Selected <b>Claude Sonnet 4</b> (or the instructor's model) and kept the temperature low.</div></div>
         </div>
       </div>
     </div>
@@ -259,6 +274,6 @@
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

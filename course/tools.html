@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tools · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -69,6 +69,42 @@
     <div class="step" id="step-11">
       <div class="num">11</div>
       <div class="body">
+        <h3>Import SaveClaimInformation into the solution</h3>
+        <p>The agent's save tool is the <b>SaveClaimInformation</b> RPA workflow. Bring it into your solution first: in the <b>Explorer</b> click <b>+</b> and choose <b>Import existing</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Explorer</span>
+            </div>
+            <img src="assets/cn_tool_import_existing.png" alt="Explorer → + → Import existing." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Explorer → + → Import existing.</figcaption>
+        </figure>
+        <p>In <b>Add project</b> search for <code class="copyable">SaveClaimInformation</code>, tick <b>SaveClaimInformation</b> and click <b>Add selected</b>. It now appears in the Explorer next to <code>Insurance_Claim_Agent</code>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Add project</span>
+            </div>
+            <img src="assets/cn_tool_add_saveclaiminformation.png" alt="Search SaveClaimInformation, tick it and click Add selected." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Search SaveClaimInformation, tick it and click Add selected.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div><b>SaveClaimInformation</b> is listed in the solution Explorer.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-12">
+      <div class="num">12</div>
+      <div class="body">
         <h3>Add the RPA workflow tool</h3>
         <p>Under <b>Tools</b> click <b>Add tool</b>, then choose <b>RPA workflow</b> in the Toolbox.</p>
         <figure>
@@ -83,7 +119,7 @@
           </div>
           <figcaption>Add tool → RPA workflow.</figcaption>
         </figure>
-        <p>Search for <code>SaveClaimInformation</code> and select <b>SaveClaimInformation</b> from the <b>Claim Intake Process</b> folder (under <b>Available resources</b>).</p>
+        <p>Search for <code class="copyable">SaveClaimInformation</code> and select <b>SaveClaimInformation</b> from the <b>Claim Intake Process</b> folder (under <b>Available resources</b>).</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -142,8 +178,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-12">
-      <div class="num">12</div>
+    <div class="step" id="step-13">
+      <div class="num">13</div>
       <div class="body">
         <h3>Add the IXP tool</h3>
         <p>Click <b>Add tool</b> again and choose <b>IXP</b> (Preview) — schema-driven data extraction from documents.</p>
@@ -159,7 +195,7 @@
           </div>
           <figcaption>Add tool → IXP.</figcaption>
         </figure>
-        <p>Search for <code>claim</code> and select <b>ClaimsProcessing_DocumentProcessing_IXP</b>.</p>
+        <p>Search for <code class="copyable">Claim</code> and select <b>ClaimsProcessing_DocumentProcessing</b> — <i>Extraction of insurance policy, claim, incident, invoice, and financial details using IXP</i>.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -168,9 +204,9 @@
               <span class="c" style="background:#28C840"></span>
               <span class="url">Studio Web · IXP project</span>
             </div>
-            <img src="assets/conversational_agent_step13_tool2_select_claims_ixp.png" alt="Select ClaimsProcessing_DocumentProcessing_IXP." loading="lazy" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/conversational_agent_step13_tool2_select_claims_ixp.png" alt="Choose tool → IXP → ClaimsProcessing_DocumentProcessing." loading="lazy" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>Select ClaimsProcessing_DocumentProcessing_IXP.</figcaption>
+          <figcaption>Choose tool → IXP → ClaimsProcessing_DocumentProcessing.</figcaption>
         </figure>
         <p>Leave the project name, open the <b>Model</b> dropdown and choose <b>live</b>, then type the description. The <code>attachment</code> input is bound to the file the user uploads in chat.</p>
         <div class="copy-wrap">
@@ -213,6 +249,6 @@
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

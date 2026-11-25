@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Supervisor Validation · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -66,8 +66,8 @@
     <h1>Supervisor Validation</h1>
     <div class="rise-divider"></div>
         <p>A human now reviews the claim. The review screen is an <b>Action App</b> that is <b>already built and deployed</b> on the tenant — you only <b>import</b> it into your solution and connect it to your process. Do not use <i>Action app</i> in the Explorer (that builds a new one).</p>
-    <div class="step" id="step-40">
-      <div class="num">40</div>
+    <div class="step" id="step-43">
+      <div class="num">43</div>
       <div class="body">
         <h3>Import the existing Action App</h3>
         <p>Select the task <b>ClaimSupervisorReview</b> on the canvas. In the Explorer click <b>+</b> and choose <b>Import existing</b> under <b>BUILDING BLOCKS</b>.</p>
@@ -102,8 +102,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-41">
-      <div class="num">41</div>
+    <div class="step" id="step-44">
+      <div class="num">44</div>
       <div class="body">
         <h3>Make it a Human Task</h3>
         <p>With the task selected, open <b>Implementation → Action</b> and choose <b>Human Task</b>.</p>
@@ -139,24 +139,26 @@
       </div>
     </div>
 
-    <div class="step" id="step-42">
-      <div class="num">42</div>
+    <div class="step" id="step-45">
+      <div class="num">45</div>
       <div class="body">
         <h3>Map the app inputs</h3>
         <p>Scroll to the task's input arguments and map each one with <b>Insert variable</b> (JS Expression editor). Most come from the Fraud agent's output objects:</p>
         <table>
           <thead><tr><th>Argument</th><th>Map to</th></tr></thead>
           <tbody>
-            <tr><td><code>incident_type</code></td><td>Fraud Detection Agent → <code>out_ClaimDetails</code> → <code>incident_type</code></td></tr>
+            <tr><td><code>ClaimId</code></td><td>Fraud Detection Agent → <code>out_ClaimDetails</code> → <code>claim_id</code></td></tr>
+            <tr><td><code>CustomerName</code></td><td><code>out_ClaimDetails</code> → <code>customer_name</code></td></tr>
+            <tr><td><code>PolicyNumber</code></td><td><code>out_ClaimDetails</code> → <code>policy_number</code></td></tr>
+            <tr><td><code>IncidentType</code></td><td><code>out_ClaimDetails</code> → <code>incident_type</code></td></tr>
             <tr><td><code>ClaimAmount</code></td><td><code>out_ClaimDetails</code> → <code>claim_amount</code></td></tr>
             <tr><td><code>FraudRiskScore</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_risk_score</code></td></tr>
             <tr><td><code>FraudRiskLevel</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_risk_level</code></td></tr>
             <tr><td><code>FraudVerdict</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_verdict</code></td></tr>
             <tr><td><code>FraudIndicators</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_indicators</code></td></tr>
             <tr><td><code>RecommendedAction</code></td><td><code>out_FraudAnalysis</code> → <code>recommended_action</code></td></tr>
-            <tr><td><code>SuggestedEmailBody</code></td><td><code>out_SuggestedResponse</code> → <code>email_body</code></td></tr>
             <tr><td><code>in_ClaimRecordFile</code></td><td>Download File from Record Field → <code>response</code> (file)</td></tr>
-            <tr><td><code>io_ApprovedEmailBody</code></td><td><code>out_SuggestedResponse</code> → <code>email_body</code></td></tr>
+            <tr><td><code>NotifyEmailBody</code></td><td><code>out_SuggestedResponse</code> → <code>email_body</code></td></tr>
           </tbody>
         </table>
         <figure>
@@ -167,9 +169,9 @@
               <span class="c" style="background:#28C840"></span>
               <span class="url">Maestro · Task inputs</span>
             </div>
-            <img src="assets/maestro_4_supervisor_validation_app_step5_map_variables.png" alt="Mapping SuggestedEmailBody from out_SuggestedResponse → email_body." loading="lazy" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/supervisor_inputs_mapped.png" alt="All ClaimSupervisorReview inputs mapped." loading="lazy" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>Mapping SuggestedEmailBody from out_SuggestedResponse → email_body.</figcaption>
+          <figcaption>All ClaimSupervisorReview inputs mapped, from ClaimId to NotifyEmailBody.</figcaption>
         </figure>
         <p>Map the claim document: click <code>in_ClaimRecordFile</code>, <b>Insert variable</b>, expand <b>Download File from Record Field</b>, and pick <b>response (file)</b>.</p>
         <figure>
@@ -184,27 +186,14 @@
           </div>
           <figcaption>in_ClaimRecordFile = Download File from Record Field → response.</figcaption>
         </figure>
-        <p>Finally, map <code>io_ApprovedEmailBody</code> to the same <code>email_body</code> as <code>SuggestedEmailBody</code>. It is the editable email text the supervisor can adjust.</p>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Maestro · Task inputs</span>
-            </div>
-            <img src="assets/maestro_4_supervisor_validation_app_step7_set_approvedemailbody.png" alt="io_ApprovedEmailBody = out_SuggestedResponse → email_body." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>io_ApprovedEmailBody = out_SuggestedResponse → email_body.</figcaption>
-        </figure>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Mapped every input argument (no red error dots left on the task).</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-43">
-      <div class="num">43</div>
+    <div class="step" id="step-46">
+      <div class="num">46</div>
       <div class="body">
         <h3>Debug, then Approve or Reject</h3>
         <p>Run <b>Debug</b>. When the action app form opens in Action Center, review the claim and its document, add <b>Reviewer comments</b>, and click <b>Approve</b> or <b>Reject</b>. The button you press becomes <code>vars.action</code>, which the gateway uses next.</p>
@@ -249,6 +238,6 @@
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

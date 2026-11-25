@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Import the BPMN File · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -82,8 +82,8 @@
           <div class="adm-title">⚠️ Before you start</div>
           <div class="adm-body">Your solution already contains <code>Insurance_Claim_Agent</code> and <code>Claim_Intake_App</code> from the previous lessons. Check that the <code>IntakeClaimEntity</code> entity exists in Data Fabric and that the <b>ClaimSupervisorReview</b> action app is available on the tenant (you will import it, not build it). You build the <b>Fraud Detect Agent</b> and the <b>Settlement Coded Agent</b> later, right before the tasks that use them.</div>
         </div>
-    <div class="step" id="step-21">
-      <div class="num">21</div>
+    <div class="step" id="step-22">
+      <div class="num">22</div>
       <div class="body">
         <h3>Add a BPMN project to the solution</h3>
         <p>In the <b>Explorer</b> of <code>Insurance_Claim_Solution</code> click <b>+</b> and choose <b>BPMN</b> under <b>Maestro Orchestrate</b>.</p>
@@ -105,8 +105,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-22">
-      <div class="num">22</div>
+    <div class="step" id="step-23">
+      <div class="num">23</div>
       <div class="body">
         <h3>Download and import the BPMN file</h3>
         <p>Download the ready-made process file:</p>
@@ -146,11 +146,11 @@
       </div>
     </div>
 
-    <div class="step" id="step-23">
-      <div class="num">23</div>
+    <div class="step" id="step-24">
+      <div class="num">24</div>
       <div class="body">
         <h3>Rename the BPMN project</h3>
-        <p>Right-click the <b>BPMN</b> project, choose <b>Rename</b> and name it <code>Insurance_Claim_MAESTRO</code>. You can delete the empty default <code>Process.bpmn</code> if it is still there.</p>
+        <p>Right-click the <b>BPMN</b> project, choose <b>Rename</b> and name it <code class="copyable">Insurance_Claim_MAESTRO</code>. You can delete the empty default <code>Process.bpmn</code> if it is still there.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -164,7 +164,7 @@
           <figcaption>Right-click the BPMN project → Rename.</figcaption>
         </figure>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Renamed the project to <code>Insurance_Claim_MAESTRO</code>.</div></div>
+          <div class="row"><span class="box"></span><div>Renamed the project to <code class="copyable">Insurance_Claim_MAESTRO</code>.</div></div>
         </div>
       </div>
     </div>
@@ -177,6 +177,47 @@
 
 
 
+    <div class="step" id="step-25">
+      <div class="num">25</div>
+      <div class="body">
+        <h3>Debug the imported process</h3>
+        <p>Open the imported <code>Insurance Claim_BPMN_Process.bpmn</code> and click <b>Debug</b> in the toolbar.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Insurance_Claim_MAESTRO</span>
+            </div>
+            <img src="assets/bpmn_after_import_debug.png" alt="The imported process — click Debug." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The imported process — click Debug.</figcaption>
+        </figure>
+        <p>Watch the run on the canvas. Every element turns green with a check mark when it completes and the <b>Execution trail</b> lists each step. A clean run from <b>Claim Ready for Review</b> to <b>End</b> confirms the file imported without errors.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Debug</span>
+            </div>
+            <img src="assets/bpmn_debug_success.png" alt="Every task completed — the BPMN runs without errors." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Every task completed — the BPMN runs without errors.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Red element?</div>
+          <div class="adm-body">If an element turns red, open it in the <b>Execution trail</b> and read the error in <b>Details</b>. Tasks you have not configured yet can be fixed in the next lessons; re-run Debug after each one.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Ran Debug on the imported process.</div></div>
+          <div class="row"><span class="box"></span><div>The run reached <b>End</b> without errors.</div></div>
+        </div>
+      </div>
+    </div>
+
     <nav class="md-footer-nav">
       <a class="prev" href="concepts-maestro.html"><span class="dir">← Previous</span><span class="ttl">Maestro BPMN Concepts</span></a>
       <a class="next" href="start-event.html"><span class="dir">Next →</span><span class="ttl">Start Event</span></a>
@@ -185,6 +226,6 @@
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

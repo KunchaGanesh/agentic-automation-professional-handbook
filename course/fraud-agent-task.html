@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fraud Detection Agent Task · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -66,8 +66,8 @@
     <h1>Fraud Detection Agent Task</h1>
     <div class="rise-divider"></div>
         <p>Right after the start event, the process calls the <b>Fraud Detect Agent</b> you built in the previous lessons and waits for its verdict.</p>
-    <div class="step" id="step-36">
-      <div class="num">36</div>
+    <div class="step" id="step-39">
+      <div class="num">39</div>
       <div class="body">
         <h3>Configure the Fraud Detection Agent task</h3>
         <p>Select the service task <b>Fraud Detection Agent</b>. Set <b>Action</b> to <b>Start and wait for agent</b>, choose <b>Agent</b> = <code>Fraud_Detect_Agent</code> from this solution, and map the input <code>in_ClaimData</code> using <b>Use variable</b> → <b>Claim Ready for Review → response (object)</b> (the <code>response</code> variable comes from the <a href="start-event.html">Start Event</a> you configured in the previous lesson). The agent's outputs (<code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, <code>out_Status</code>) become variables for the rest of the flow.</p>
@@ -94,8 +94,8 @@
           <div class="adm-title">💡 Agent not in the list?</div>
           <div class="adm-body">Because the agent is part of the same solution you do not need to publish it separately. Click <b>Refresh</b> next to <b>Agent</b>; if it is still missing, save the agent and reopen the BPMN file.</div>
         </div>
-    <div class="step" id="step-37">
-      <div class="num">37</div>
+    <div class="step" id="step-40">
+      <div class="num">40</div>
       <div class="body">
         <h3>Run and check the results</h3>
         <p>Click <b>Debug</b>. The <b>Fraud Detection Agent</b> task should succeed. In <b>Global variables</b> check <code>out_ClaimDetails</code> (including <code>record_id</code>), <code>out_FraudAnalysis</code> (score, level, indicators), <code>out_Status</code> (routing action) and <code>out_SuggestedResponse</code> (email subject and body).</p>
@@ -127,6 +127,6 @@
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:uipath="http://uipath.org/schema/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" exporter="UiPath Studio Web (https://uipath.com)" exporterVersion="2fe43f3e">
-  <bpmn:process id="Process_1" name="Insurance Claim_BPMN_Process">
+  <bpmn:process id="Process_1" name="Insurance_Claim_BPMN_Process">
     <bpmn:extensionElements>
       <uipath:variables version="v1">
         <uipath:input id="vAction" name="action" type="string" elementId="Process_1" default="Approve" />
@@ -23,13 +23,13 @@
       <bpmn:outgoing>edge_LUTApu_XqiQ8R</bpmn:outgoing>
     </bpmn:task>
     <bpmn:exclusiveGateway id="Gateway_KXuPfP" name="Reviewer Action GateWay" default="edge_5KSVUg">
-      <bpmn:incoming>edge_WogvLk_Gateway</bpmn:incoming>
+      <bpmn:incoming>edge_GudwI6</bpmn:incoming>
       <bpmn:outgoing>edge_Y9T9sF</bpmn:outgoing>
       <bpmn:outgoing>edge_5KSVUg</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:task id="Activity_WogvLk" name="Send Notify Email to Claimant">
-      <bpmn:incoming>edge_XqiQ8R_ZcUcDt</bpmn:incoming>
-      <bpmn:outgoing>edge_ZcUcDt_WogvLk</bpmn:outgoing>
+      <bpmn:incoming>edge_6Igdzx</bpmn:incoming>
+      <bpmn:outgoing>edge_GudwI6</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Activity_2dYmFI" name="Generate Decision Email">
       <bpmn:incoming>edge_E1M8B4</bpmn:incoming>
@@ -55,20 +55,17 @@
     </bpmn:startEvent>
     <bpmn:task id="Activity_XqiQ8R" name="Download File from Record Field">
       <bpmn:incoming>edge_LUTApu_XqiQ8R</bpmn:incoming>
-      <bpmn:outgoing>edge_XqiQ8R_ZcUcDt</bpmn:outgoing>
+      <bpmn:outgoing>edge_9mEnsK</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Activity_ZcUcDt" name="ClaimSupervisorReview">
-      <bpmn:incoming>edge_ZcUcDt_WogvLk</bpmn:incoming>
-      <bpmn:outgoing>edge_WogvLk_Gateway</bpmn:outgoing>
+      <bpmn:incoming>edge_9mEnsK</bpmn:incoming>
+      <bpmn:outgoing>edge_6Igdzx</bpmn:outgoing>
     </bpmn:task>
     <bpmn:sequenceFlow id="edge_Y9T9sF" name="Approve" sourceRef="Gateway_KXuPfP" targetRef="Activity_ncoQVu">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=true</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="edge_j2lFMX" sourceRef="Event_mhV0AR" targetRef="Activity_LUTApu" />
     <bpmn:sequenceFlow id="edge_LUTApu_XqiQ8R" sourceRef="Activity_LUTApu" targetRef="Activity_XqiQ8R" />
-    <bpmn:sequenceFlow id="edge_XqiQ8R_ZcUcDt" sourceRef="Activity_XqiQ8R" targetRef="Activity_WogvLk" />
-    <bpmn:sequenceFlow id="edge_ZcUcDt_WogvLk" sourceRef="Activity_WogvLk" targetRef="Activity_ZcUcDt" />
-    <bpmn:sequenceFlow id="edge_WogvLk_Gateway" sourceRef="Activity_ZcUcDt" targetRef="Gateway_KXuPfP" />
     <bpmn:sequenceFlow id="edge_E1M8B4" sourceRef="Activity_ncoQVu" targetRef="Activity_2dYmFI" />
     <bpmn:sequenceFlow id="edge_2dYmFI_mNRQwP" sourceRef="Activity_2dYmFI" targetRef="Activity_mNRQwP" />
     <bpmn:sequenceFlow id="edge_5KSVUg" name="Reject" sourceRef="Gateway_KXuPfP" targetRef="Activity_2dYmFI" />
@@ -82,6 +79,9 @@
     <bpmn:association id="assoc_2qZGp1" sourceRef="Activity_ncoQVu" targetRef="Text_2qZGp1" />
     <bpmn:association id="assoc_rmDoUH" sourceRef="Activity_2dYmFI" targetRef="Text_rmDoUH" />
     <bpmn:association id="assoc_o4hY7a" sourceRef="Activity_mNRQwP" targetRef="Text_o4hY7a" />
+    <bpmn:sequenceFlow id="edge_9mEnsK" sourceRef="Activity_XqiQ8R" targetRef="Activity_ZcUcDt" />
+    <bpmn:sequenceFlow id="edge_6Igdzx" sourceRef="Activity_ZcUcDt" targetRef="Activity_WogvLk" />
+    <bpmn:sequenceFlow id="edge_GudwI6" sourceRef="Activity_WogvLk" targetRef="Gateway_KXuPfP" />
     <bpmn:textAnnotation id="Text_fVqkGj">
       <bpmn:text>Start Event – Claim Ready for Review and available supporting documents are ready for processing.</bpmn:text>
     </bpmn:textAnnotation>
@@ -118,16 +118,24 @@
           <dc:Bounds x="206" y="253" width="100" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_GudwI6" bpmnElement="edge_GudwI6">
+        <di:waypoint x="802" y="208" />
+        <di:waypoint x="871" y="208" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="S_Gateway_KXuPfP" bpmnElement="Gateway_KXuPfP">
         <dc:Bounds x="871" y="183" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="871" y="238" width="50" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_6Igdzx" bpmnElement="edge_6Igdzx">
+        <di:waypoint x="642" y="208" />
+        <di:waypoint x="702" y="208" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="S_Activity_WogvLk" bpmnElement="Activity_WogvLk">
-        <dc:Bounds x="510" y="168" width="100" height="80" />
+        <dc:Bounds x="702" y="168" width="100" height="80" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="510" y="253" width="100" height="14" />
+          <dc:Bounds x="702" y="253" width="100" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Activity_2dYmFI" bpmnElement="Activity_2dYmFI">
@@ -232,18 +240,6 @@
         <di:waypoint x="306" y="208" />
         <di:waypoint x="366" y="208" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_edge_XqiQ8R_ZcUcDt" bpmnElement="edge_XqiQ8R_ZcUcDt">
-        <di:waypoint x="466" y="208" />
-        <di:waypoint x="510" y="208" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_edge_ZcUcDt_WogvLk" bpmnElement="edge_ZcUcDt_WogvLk">
-        <di:waypoint x="610" y="208" />
-        <di:waypoint x="686" y="208" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_edge_WogvLk_Gateway" bpmnElement="edge_WogvLk_Gateway">
-        <di:waypoint x="786" y="208" />
-        <di:waypoint x="871" y="208" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_edge_E1M8B4" bpmnElement="edge_E1M8B4">
         <di:waypoint x="946" y="96" />
         <di:waypoint x="1072" y="96" />
@@ -253,10 +249,14 @@
         <di:waypoint x="1122" y="208" />
         <di:waypoint x="1182" y="208" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_9mEnsK" bpmnElement="edge_9mEnsK">
+        <di:waypoint x="466" y="208" />
+        <di:waypoint x="542" y="208" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="S_Activity_ZcUcDt" bpmnElement="Activity_ZcUcDt">
-        <dc:Bounds x="686" y="168" width="100" height="80" />
+        <dc:Bounds x="542" y="168" width="100" height="80" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="686" y="253" width="100" height="14" />
+          <dc:Bounds x="542" y="253" width="100" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_edge_5KSVUg" bpmnElement="edge_5KSVUg">
@@ -280,12 +280,12 @@
         <di:waypoint x="416" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_kocoA4" bpmnElement="assoc_kocoA4">
-        <di:waypoint x="560" y="248" />
-        <di:waypoint x="560" y="288" />
+        <di:waypoint x="581.3333333333334" y="248" />
+        <di:waypoint x="570.6666666666666" y="288" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_R8qmFY" bpmnElement="assoc_R8qmFY">
-        <di:waypoint x="736" y="168" />
-        <di:waypoint x="736" y="112" />
+        <di:waypoint x="747" y="168" />
+        <di:waypoint x="740" y="112" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_tPoiSO" bpmnElement="assoc_tPoiSO">
         <di:waypoint x="896" y="233" />

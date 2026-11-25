@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Generate the Decision Email · Insurance Claim Solution</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261125">
+<link rel="stylesheet" href="../assets/course.css?v=20261126">
 </head>
 <body>
 
@@ -70,8 +70,8 @@
           <div class="adm-body">The Reviewer Action Gateway runs before settlement, so it keeps <code>vars.action == "Approve"</code>. In <b>Generate Decision Email</b> also check the coded agent's result: use the approval email only when <code>vars.action == "Approve" &amp;&amp; vars.eligible == true</code>; otherwise generate the additional-document or not-approved email. Set <b>Output format</b> to <b>HTML</b> and use <code>&lt;p&gt;</code> and <code>&lt;br&gt;</code> tags — never literal <code>\n</code>.</div>
         </div>
         <p>Both branches meet at <b>Generate Approval Email</b>. A single <b>GenAI</b> activity writes either the approval email or the "more documents needed" email, depending on <code>vars.action</code>.</p>
-    <div class="step" id="step-68">
-      <div class="num">68</div>
+    <div class="step" id="step-71">
+      <div class="num">71</div>
       <div class="body">
         <h3>Choose the Generate Email activity</h3>
         <p>Select the task <b>Generate Approval Email</b>. Set <b>Action</b> to <b>Execute connector activity</b>, then click <b>Select activity</b>.</p>
@@ -106,8 +106,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-69">
-      <div class="num">69</div>
+    <div class="step" id="step-72">
+      <div class="num">72</div>
       <div class="body">
         <h3>Configure the activity</h3>
         <p>Set the properties below, then click the <b>Email content</b> field to open the text builder.</p>
@@ -235,6 +235,6 @@
   </main>
 </div>
 
-<script src="../assets/course.js?v=20261125"></script>
+<script src="../assets/course.js?v=20261126"></script>
 </body>
 </html>
