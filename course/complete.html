@@ -67,6 +67,32 @@
     <div class="rise-divider"></div>
 
     <p class="lead">You built the whole Insurance Claim Solution — from conversational intake to an orchestrated, agent-driven approval — in one solution.</p>
+    <h2 id="platform">One solution across the UiPath Platform</h2>
+    <p>You built a complete, end-to-end agentic automation in a single Studio Web solution. Instead of one tool solving one task, the Insurance Claim Solution combines the core capabilities of the <b>UiPath Platform for agentic automation</b> — agents, robots and people working together in one orchestrated, governed process. This is what makes agentic automation useful in the enterprise: each part does what it is best at, and the platform keeps the whole process observable, auditable and under control.</p>
+    <div class="grid g2">
+      <div class="card"><div class="ico">🤖</div><h4>Agents</h4><p>You built a <b>conversational agent</b> that collects claims in natural language and an <b>autonomous agent</b> that assesses fraud risk, both in <b>Agent Builder</b> in Studio Web. They are grounded in your data through <b>Context Grounding</b> and Data Fabric, act through <b>tools</b> (an RPA workflow and IXP document extraction), and were measured with <b>evaluation sets</b> before going into the process.</p></div>
+      <div class="card"><div class="ico">🧭</div><h4>Maestro</h4><p><b>UiPath Maestro</b> orchestrates the long-running claim process end to end on a <b>BPMN</b> model: an event trigger on the claim entity, agent tasks, a document download, a human task, a decision gateway, a coded agent and GenAI emails — with every run visible in the execution trail and every instance traceable.</p></div>
+      <div class="card"><div class="ico">🧑‍⚖️</div><h4>Human escalation</h4><p>People stay in control of high-stakes decisions. The <b>ClaimSupervisorReview</b> action app turns each claim into a task in <b>Action Center</b>, where a supervisor reviews the agent's analysis and the document and approves or rejects it. Maestro waits for that decision and routes the process accordingly — human-in-the-loop by design.</p></div>
+      <div class="card"><div class="ico">⌨️</div><h4>Coded agents</h4><p>For logic that must be exact and repeatable, you wrote a <b>coded agent</b> in Python with LangGraph and the UiPath SDK and CLI. It was tested locally, pushed into the same solution, called a governed model through the <b>LLM Gateway</b>, and runs in Maestro like any other agent.</p></div>
+      <div class="card"><div class="ico">✨</div><h4>GenAI</h4><p><b>GenAI Activities</b> generate the claimant's decision email in HTML from the process data, so every message is personal, accurate and consistent — without hand-written templates for each outcome.</p></div>
+      <div class="card"><div class="ico">🛡️</div><h4>Governance and trust</h4><p>Every model call runs through the <b>AI Trust Layer</b>, and the whole solution — agents, app, process and coded agent — is <b>deployed together</b> to Orchestrator, where it is versioned, permissioned and monitored like the rest of your automations.</p></div>
+    </div>
+    <h2 id="learned">What you learned</h2>
+    <p>In this training you practised the full lifecycle of an agentic automation, from design to deployment:</p>
+    <table>
+      <thead><tr><th>Area</th><th>What you can now do</th></tr></thead>
+      <tbody>
+        <tr><td><b>Solution design</b></td><td>Structure a business process as one Studio Web solution, and decide which step belongs to an agent, a robot, a person or a coded agent.</td></tr>
+        <tr><td><b>Conversational agents</b></td><td>Choose a model and its settings, write a system prompt with clear rules, ground the agent in Data Fabric and indexes, and give it tools (RPA workflow, IXP).</td></tr>
+        <tr><td><b>Testing agents</b></td><td>Test an agent with realistic data, including edge cases such as mismatched documents, inactive policies and cancellations, and debug it from its trace.</td></tr>
+        <tr><td><b>Autonomous agents</b></td><td>Define typed input and output arguments, design prompts that return structured results, and measure quality with evaluation sets and evaluators.</td></tr>
+        <tr><td><b>Maestro orchestration</b></td><td>Import a BPMN model, trigger it from a Data Fabric event, map variables between tasks, branch with gateways and debug a long-running process.</td></tr>
+        <tr><td><b>Human in the loop</b></td><td>Add an action app as a human task, pass it the right data and route the process on the reviewer's decision.</td></tr>
+        <tr><td><b>Coded agents</b></td><td>Set up the UiPath CLI, scaffold a LangGraph agent, combine an LLM with deterministic Python rules, test it locally and push it into the solution.</td></tr>
+        <tr><td><b>GenAI and integrations</b></td><td>Generate HTML emails with GenAI Activities and send them through an Integration Service connector.</td></tr>
+        <tr><td><b>Deployment and governance</b></td><td>Deploy the complete solution together, check it in Orchestrator and trigger it live, with every model call governed by the AI Trust Layer.</td></tr>
+      </tbody>
+    </table>
     <h2 id="recap">Completion checklist</h2>
     <div class="checklist">
           <div class="row"><span class="box"></span><div>Created <code>Insurance_Claim_Solution</code> with the conversational <code>Insurance_Claim_Agent</code> (prompt, contexts and tools)</div></div>
@@ -89,7 +115,7 @@
 
     <div class="adm tip">
       <div class="adm-title">💡 Congratulations</div>
-      <div class="adm-body">You built a conversational agent, a fraud agent, a coded agent, and a Maestro process that orchestrates them with human oversight.</div>
+      <div class="adm-body">You built an end-to-end agentic solution on the UiPath Platform: a conversational agent, an autonomous fraud agent, a coded settlement agent, human review in Action Center and GenAI emails — orchestrated by Maestro and deployed as one solution.</div>
     </div>
 
     <nav class="md-footer-nav">
